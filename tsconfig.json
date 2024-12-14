@@ -2,11 +2,12 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    "baseUrl": ".",
     // esModuleInterop for using common js packages as usual packages
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
