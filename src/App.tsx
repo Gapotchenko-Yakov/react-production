@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import "./index.scss";
+import "./styles/index.scss";
 import { Link } from "react-router-dom";
 import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
 import { MainPageAsync } from "./pages/MainPage/MainPage.async";
@@ -7,7 +7,7 @@ import { Suspense } from "react";
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app dark">
       <Link to="/">Главная</Link>
       <Link to="/about">О сайте</Link>
 
