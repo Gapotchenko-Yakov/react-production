@@ -1,7 +1,7 @@
 export type Mode = "development" | "production";
 
 export interface BuildPaths {
-  entry: string;
+  src: string;
   build: string;
   html: string;
 }
