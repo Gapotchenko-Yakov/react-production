@@ -14,7 +14,7 @@ export enum AppLinkTheme {
   RED = "red",
 }
 
-export const AppLink: FC<AppLinkProps> = (props) => {
+const AppLink: FC<AppLinkProps> = (props) => {
   const {
     className,
     to,
