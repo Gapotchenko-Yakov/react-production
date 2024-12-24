@@ -1,9 +1,21 @@
 {
-  "i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"],
-  "i18n-ally.keystyle": "flat",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+    "i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"],
+    "i18n-ally.keystyle": "flat",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "stylelint.validate": ["css", "scss"],
+    "files.associations": {
+        "*.scss": "scss"
+    }
 }

@@ -1,19 +1,19 @@
 .Button {
-  cursor: pointer;
+    cursor: pointer;
 
-  &.clear {
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: none;
-    outline: none;
-  }
+    &.clear {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        outline: none;
+    }
 
-  &.primary {
-    color: var(--primary-color);
-  }
+    &.primary {
+        color: var(--primary-color);
+    }
 
-  &.secondary {
-    color: var(--inverted-primary-color);
-  }
+    &.secondary {
+        color: var(--inverted-primary-color);
+    }
 }
