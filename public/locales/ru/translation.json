@@ -2,5 +2,8 @@
     "Test Component": "Тестовый компонент",
     "Translation": "Перевод",
     "Language": "Russian",
-    "Page not found": "Страница не найдена"
+    "Page not found": "Страница не найдена",
+    "Reload page": "Перезагрузить страницу",
+    "Something went wrong": "Произошла непредвиденная ошибка",
+    "Throw Error": "Вызвать ошибку"
 }
