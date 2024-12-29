@@ -9,6 +9,13 @@
         outline: none;
     }
 
+    &.outlined {
+        padding: 10px 15px;
+        border: 1px solid var(--primary-color);
+        background: none;
+        color: var(--primary-color);
+    }
+
     &.primary {
         color: var(--primary-color);
     }
