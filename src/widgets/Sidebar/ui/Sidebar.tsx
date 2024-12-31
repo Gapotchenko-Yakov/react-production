@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { classNames } from 'shared/lib';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Button } from 'shared/ui';
+import { Button, ButtonTheme } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 import cls from './Sidebar.module.scss';
 
@@ -25,7 +25,13 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
             ])}
             data-testid="sidebar"
         >
-            <Button onClick={onToggle}>{t('Toggle')}</Button>
+            <Button
+                onClick={onToggle}
+                className={classNames(cls.collapseBtn)}
+                theme={ButtonTheme.BACKGROUND_INVERTED}
+            >
+                {collapsed ? '>' : '<'}
+            </Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang} />
