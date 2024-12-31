@@ -1,12 +1,16 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-interface MainPageProps {
-}
+interface MainPageProps {}
 
 const MainPage = (props: MainPageProps) => {
-    const { t } = useTranslation('main');
+    const { t } = useTranslation();
 
-    return <div>{t('Main')}</div>;
+    return (
+        <div>
+            {t('Main')}
+        </div>
+    );
 };
 
 export default MainPage;

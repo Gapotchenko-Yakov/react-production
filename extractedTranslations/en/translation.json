@@ -1,7 +1,21 @@
 {
   "About": "About",
-  "Main": "Main Page",
+  "Main": "Main",
+  "Page Not Found": "Page Not Found",
   "Page not found": "Page not found",
   "Reload page": "Reload page",
-  "Something went wrong": "Something went wrong"
+  "Something went wrong": "Something went wrong",
+  "Throw an Error": "Throw an Error",
+  "Throw an error": "Throw an error",
+  "Unexpected error": "Unexpected error",
+  "throw error": "throw error",
+  "Главная": "Главная",
+  "Главная страница": "Главная страница",
+  "О сайте": "О сайте",
+  "О сайте123123": "О сайте123123",
+  "Обновить страницу": "Обновить страницу",
+  "Переключить": "Переключить",
+  "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
+  "Страница не найдена": "Страница не найдена",
+  "Язык": "Язык"
 }

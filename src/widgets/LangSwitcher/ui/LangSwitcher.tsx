@@ -21,7 +21,7 @@ const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
             theme={ButtonTheme.CLEAR}
             onClick={toggle}
         >
-            {t(short ? 'Короткий язык' : 'Язык')}
+            {t(short ? 'Short Language' : 'Language')}
         </Button>
     );
 };
