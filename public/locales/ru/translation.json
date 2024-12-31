@@ -1,12 +1,15 @@
 {
     "Test Component": "Тестовый компонент",
     "Translation": "Перевод",
-    "Language": "Russian",
+    "Language": "Русский",
     "Page not found": "Страница не найдена",
     "Reload page": "Перезагрузить страницу",
     "Something went wrong": "Произошла непредвиденная ошибка",
     "Throw Error": "Вызвать ошибку",
     "Toggle": "Переключить",
     "Main": "Главная",
-    "About": "О сайте"
+    "About": "О сайте",
+    "Short Language": "RU",
+    "translation.Short Language": "RU",
+    "translation.Language": "Русский"
 }

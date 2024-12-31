@@ -2,11 +2,14 @@
   "Test Component": "Test Component",
   "Translation": "Translation",
   "Language": "English",
-  "Page not found": "Page not found",
+  "Page not found": "Page not found 22",
   "Reload page": "Reload page",
   "Something went wrong": "Something went wrong",
   "Throw an Error": "Throw an Error",
   "Toggle": "Toggle",
-  "Main": "Main",
-  "About": "About"
+  "Main": "Main Page From Translation",
+  "About": "About Page From Translation",
+  "Short Language": "EN",
+  "translation.Short Language": "EN",
+  "translation.Language": "English"
 }
