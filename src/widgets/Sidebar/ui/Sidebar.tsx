@@ -30,11 +30,13 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
             data-testid="sidebar"
         >
             <Button
+                data-testid="toggle"
                 onClick={onToggle}
                 className={classNames(cls.collapseBtn)}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 square
                 size={ButtonSize.L}
+
             >
                 {collapsed ? '>' : '<'}
             </Button>
