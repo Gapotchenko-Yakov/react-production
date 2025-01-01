@@ -38,4 +38,12 @@
             }
         }
     }
+
+    &.isClosing {
+        .overlay {
+            .content {
+                transform: scale(0.5);
+            }
+        }
+    }
 }

@@ -18,7 +18,7 @@ function App() {
             <Suspense fallback={<Loader />}>
                 <Navbar />
                 <Button onClick={() => setIsOpen(true)}>Modal Toggle</Button>
-                <Modal isOpen={isOpen}>
+                <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Facilis id dolorem vitae perspiciatis labore ut,
                     at illo odit nostrum itaque inventore culpa maxime,
