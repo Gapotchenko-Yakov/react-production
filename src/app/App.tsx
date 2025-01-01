@@ -1,13 +1,13 @@
+import React, { Suspense, useEffect } from 'react';
 import './styles/index.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
-import { classNames } from 'shared/lib';
+import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { Suspense } from 'react';
-import { Loader } from 'shared/ui';
-import { AppRouter } from './providers/router';
+import Loader from 'shared/ui/Loader/Loader';
 
-const App = () => {
+function App() {
     const { theme } = useTheme();
 
     return (
@@ -21,6 +21,6 @@ const App = () => {
             </Suspense>
         </div>
     );
-};
+}
 
 export default App;

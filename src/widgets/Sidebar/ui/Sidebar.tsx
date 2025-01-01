@@ -1,13 +1,11 @@
 import { FC, useState } from 'react';
-import { classNames } from 'shared/lib';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import {
-    AppLink, AppLinkTheme, Button, ButtonTheme,
-} from 'shared/ui';
+import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import { ButtonSize } from 'shared/ui/Button/Button';
-import { routePath } from 'shared/config';
+import Button, { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { routePath } from 'shared/config/routeConfig/routeConfig';
 import InfoIcon from 'shared/assets/icons/solid/information-circle.svg';
 import HomeIcon from 'shared/assets/icons/solid/home.svg';
 import cls from './Sidebar.module.scss';
@@ -32,11 +30,13 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
             data-testid="sidebar"
         >
             <Button
+                data-testid="toggle"
                 onClick={onToggle}
                 className={classNames(cls.collapseBtn)}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 square
                 size={ButtonSize.L}
+
             >
                 {collapsed ? '>' : '<'}
             </Button>

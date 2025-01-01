@@ -1,15 +1,15 @@
 {
-  "Test Component": "Test Component",
-  "Translation": "Translation",
+  "Test Example": "Test example",
+  "Translate": "Translate",
+  "Main Page": "Main Page",
   "Language": "English",
-  "Page not found": "Page not found 22",
+  "new translate": "новый перевод",
+  "Page Not Found": "Page not found",
+  "Unexpected error": "An unexpected error has occurred",
   "Reload page": "Reload page",
-  "Something went wrong": "Something went wrong",
-  "Throw an Error": "Throw an Error",
-  "Toggle": "Toggle",
-  "Main": "Main Page From Translation",
-  "About": "About Page From Translation",
-  "Short Language": "EN",
-  "translation.Short Language": "EN",
-  "translation.Language": "English"
+  "Throw an error": "throw error",
+  "Main": "Main",
+  "About": "About us",
+  "Toggle": "Переключить",
+  "Short Language": "EN"
 }
