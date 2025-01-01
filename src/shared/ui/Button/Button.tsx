@@ -10,11 +10,6 @@ export enum ButtonTheme {
     BACKGROUND_INVERTED = 'backgroundInverted',
 }
 
-export enum ButtonColor {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-}
-
 export enum ButtonSize {
     M = 'size_m',
     L = 'size_l',
@@ -24,7 +19,6 @@ export enum ButtonSize {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: ButtonTheme;
-    color?: ButtonColor;
     square?: boolean;
     size?: ButtonSize;
 }
@@ -36,7 +30,6 @@ const Button: FC<ButtonProps> = (props) => {
         theme,
         square,
         size = ButtonSize.M,
-        color = ButtonColor.PRIMARY,
         ...otherProps
     } = props;
 
@@ -46,7 +39,6 @@ const Button: FC<ButtonProps> = (props) => {
             className={classNames(cls.Button, { [cls.square]: square }, [
                 className,
                 cls[theme],
-                cls[color],
                 cls[size],
             ])}
             {...otherProps}

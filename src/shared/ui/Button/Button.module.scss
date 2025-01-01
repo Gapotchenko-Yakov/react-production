@@ -1,6 +1,7 @@
 .Button {
     cursor: pointer;
     padding: 7px 15px;
+    color: var(--primary-color);
 
     &.clear {
         padding: 0;
@@ -27,13 +28,7 @@
         border: none;
     }
 
-    &.primary {
-        color: var(--primary-color);
-    }
 
-    &.secondary {
-        color: var(--inverted-primary-color);
-    }
 
     &.square {
         padding: 0;
