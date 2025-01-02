@@ -2,7 +2,9 @@ import {
     FC, MouseEvent, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
 import cls from './Modal.module.scss';
+import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
   className?: string;
@@ -19,6 +21,9 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
+
+    const { theme } = useTheme();
+
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const closeHandler = useCallback(() => {
@@ -56,13 +61,15 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
     };
 
     return (
-        <div className={classNames(cls.Modal, mods, [className])}>
-            <div className={cls.overlay} onClick={closeHandler}>
-                <div className={cls.content} onClick={onContentClick}>
-                    {children}
+        <Portal>
+            <div className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}>
+                <div className={cls.overlay} onClick={closeHandler}>
+                    <div className={cls.content} onClick={onContentClick}>
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Portal>
     );
 };
 export default Modal;
