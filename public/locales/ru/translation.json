@@ -12,5 +12,7 @@
   "About": "О сайте",
   "Toggle": "Переключить",
   "Short Language": "RU",
-  "Log In": "Войти"
+  "Log In": "Войти",
+  "increment": "Уменьшить",
+  "decrement": "Увеличить"
 }

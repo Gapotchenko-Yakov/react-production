@@ -12,5 +12,7 @@
   "About": "About us",
   "Toggle": "Переключить",
   "Short Language": "EN",
-  "Log In": "Log In"
+  "Log In": "Log In",
+  "increment": "increment",
+  "decrement": "decrement"
 }

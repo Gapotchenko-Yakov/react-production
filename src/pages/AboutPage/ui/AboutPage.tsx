@@ -1,3 +1,4 @@
+import { Counter } from 'entities/Counter';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +10,7 @@ const AboutPage = (props: AboutPageProps) => {
     return (
         <div>
             {t('About')}
+            <Counter />
         </div>
     );
 };
