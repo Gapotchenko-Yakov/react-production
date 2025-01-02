@@ -10,7 +10,6 @@ const AboutPage = (props: AboutPageProps) => {
     return (
         <div>
             {t('About')}
-            <Counter />
         </div>
     );
 };
