@@ -15,7 +15,7 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-const Modal: FC<ModalProps> = (props: ModalProps) => {
+export const Modal: FC<ModalProps> = (props: ModalProps) => {
     const {
         className, children, isOpen, onClose,
     } = props;
@@ -72,4 +72,3 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
         </Portal>
     );
 };
-export default Modal;
