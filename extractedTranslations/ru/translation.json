@@ -1,6 +1,7 @@
 {
   "About": "About",
   "Log In": "Log In",
+  "Login": "Login",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam": {
       "": ""
@@ -17,6 +18,8 @@
   "decrement": "decrement",
   "increment": "increment",
   "throw error": "throw error",
+  "Введите username": "Введите username",
+  "Введите пароль": "Введите пароль",
   "Главная": "Главная",
   "Главная страница": "Главная страница",
   "О сайте": "О сайте",
