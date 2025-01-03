@@ -20,7 +20,7 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
                 type="text"
                 className={cls.input}
                 placeholder={t('Введите username')}
-
+                autofocus
             />
             <Input
                 type="text"

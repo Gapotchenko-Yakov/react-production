@@ -29,6 +29,21 @@
             position: absolute;
             bottom: 0;
             left: 0;
+            animation: blink 0.7s forwards infinite;
+        }
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.01;
+        }
+
+        100% {
+            opacity: 1;
         }
     }
 }
