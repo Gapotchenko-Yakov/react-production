@@ -18,6 +18,8 @@
   "decrement": "decrement",
   "increment": "increment",
   "throw error": "throw error",
+  "Введите username": "Введите username",
+  "Введите пароль": "Введите пароль",
   "Главная": "Главная",
   "Главная страница": "Главная страница",
   "О сайте": "О сайте",

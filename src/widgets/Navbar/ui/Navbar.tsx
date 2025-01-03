@@ -15,20 +15,27 @@ const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
 
-    const onToggleModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = useCallback(() => {
+        setIsAuthModal(false);
+    }, []);
+
+    const onShowModal = useCallback(() => {
+        setIsAuthModal(true);
     }, []);
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
             <Button
                 className={cls.links}
-                onClick={onToggleModal}
+                onClick={onShowModal}
                 theme={ButtonTheme.CLEAR_INVERTED}
             >
                 {t('Login')}
             </Button>
-            <LoginModal isOpen={isAuthModal} onClose={onToggleModal} />
+            <LoginModal
+                isOpen={isAuthModal}
+                onClose={onCloseModal}
+            />
 
         </div>
     );
