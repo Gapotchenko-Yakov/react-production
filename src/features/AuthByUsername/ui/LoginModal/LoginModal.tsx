@@ -15,14 +15,13 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
     } = props;
 
     return (
-        <div className={classNames('', {}, [className])}>
-            <Modal
-                className={className}
-                isOpen={isOpen}
-                onClose={onClose}
-            >
-                <LoginForm />
-            </Modal>
-        </div>
+        <Modal
+            className={className}
+            isOpen={isOpen}
+            onClose={onClose}
+            lazy
+        >
+            <LoginForm />
+        </Modal>
     );
 };
