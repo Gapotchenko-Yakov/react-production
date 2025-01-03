@@ -15,5 +15,6 @@
   "Log In": "Log In",
   "increment": "increment",
   "decrement": "decrement",
-  "Login": "Login"
+  "Login": "Login",
+  "Uncorrect username or password": "Uncorrect username or password"
 }

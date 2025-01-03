@@ -15,5 +15,6 @@
   "Log In": "Войти",
   "increment": "Уменьшить",
   "decrement": "Увеличить",
-  "Login": "Войти"
+  "Login": "Войти",
+  "Uncorrect username or password": "Вы ввели неверный логин или пароль"
 }

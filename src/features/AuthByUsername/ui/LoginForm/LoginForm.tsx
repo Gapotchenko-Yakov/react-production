@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import cls from './LoginForm.module.scss';
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
@@ -36,6 +37,13 @@ export const LoginForm = memo((props: LoginFormProps) => {
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
+            <Text title={t('Форма авторизации')} />
+            {error && (
+                <Text
+                    text={t('Вы ввели неверный логин или пароль')}
+                    theme={TextTheme.ERROR}
+                />
+            )}
             <Input
                 type="text"
                 className={cls.input}
