@@ -9,7 +9,7 @@ const AboutPage = (props: AboutPageProps) => {
 
     return (
         <div>
-            {t('About')}
+            {t('О сайте')}
         </div>
     );
 };
