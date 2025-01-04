@@ -4,7 +4,7 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import Button, { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { routePath } from 'shared/config/routeConfig/routeConfig';
 import InfoIcon from 'shared/assets/icons/solid/information-circle.svg';
 import HomeIcon from 'shared/assets/icons/solid/home.svg';
@@ -48,7 +48,9 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
 
                 >
                     <HomeIcon className={cls.icon} />
-                    <span className={cls.link}>{t('Main')}</span>
+                    <span className={cls.link}>
+                        {t('Главная')}
+                    </span>
                 </AppLink>
                 <AppLink
                     to={routePath.about}
@@ -56,7 +58,9 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
                     className={cls.item}
                 >
                     <InfoIcon className={cls.icon} />
-                    <span className={cls.link}>{t('About')}</span>
+                    <span className={cls.link}>
+                        {t('О сайте')}
+                    </span>
                 </AppLink>
 
             </div>

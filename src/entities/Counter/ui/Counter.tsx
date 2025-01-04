@@ -1,16 +1,10 @@
-import { FC } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import Button from 'shared/ui/Button/Button';
+import { Button } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import cls from './Counter.module.scss';
-import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { counterActions } from '../model/slice/counterSlice';
+import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 
-interface CounterProps {
-}
-
-export const Counter: FC<CounterProps> = () => {
+export const Counter = () => {
     const dispatch = useDispatch();
     const counterValue = useSelector(getCounterValue);
     const { t } = useTranslation();
@@ -25,7 +19,7 @@ export const Counter: FC<CounterProps> = () => {
 
     return (
         <div>
-            <h2 data-testid="value-title">{counterValue}</h2>
+            <h1 data-testid="value-title">{counterValue}</h1>
             <Button
                 onClick={increment}
                 data-testid="increment-btn"
@@ -33,8 +27,8 @@ export const Counter: FC<CounterProps> = () => {
                 {t('increment')}
             </Button>
             <Button
-                onClick={decrement}
                 data-testid="decrement-btn"
+                onClick={decrement}
             >
                 {t('decrement')}
             </Button>
