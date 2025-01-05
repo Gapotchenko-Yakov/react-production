@@ -1,0 +1,21 @@
+import { DeepPartial } from '@reduxjs/toolkit';
+import { StateSchema } from 'app/providers/StoreProvider';
+import { getLoginPassword } from './getLoginPassword';
+
+describe('getLoginPassword', () => {
+    test('should return password', () => {
+        const state: DeepPartial<StateSchema> = {
+            loginForm: {
+                password: 'some_password',
+            },
+        };
+        expect(getLoginPassword(state as StateSchema)).toBe('some_password');
+    });
+
+    test('should work with empty state', () => {
+        const state: DeepPartial<StateSchema> = {
+
+        };
+        expect(getLoginPassword(state as StateSchema)).toBe('');
+    });
+});
