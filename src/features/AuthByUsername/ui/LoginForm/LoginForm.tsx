@@ -2,10 +2,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector, useStore } from 'react-redux';
-import { memo, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { memo, useCallback } from 'react';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import DynamicModuleLoader from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
@@ -18,6 +17,8 @@ import cls from './LoginForm.module.scss';
 export interface LoginFormProps {
     className?: string;
 }
+
+const initialReducers = { loginForm: loginReducer };
 
 const LoginForm = memo(({ className }: LoginFormProps) => {
     const { t } = useTranslation();
@@ -42,9 +43,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader
-            // eslint-disable-next-line i18next/no-literal-string
-            name="loginForm"
-            reducer={loginReducer}
+            reducers={initialReducers}
             removeAfterUnmount
         >
             <div className={classNames(cls.LoginForm, {}, [className])}>
