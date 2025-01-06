@@ -6,10 +6,10 @@ import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { routePath } from 'shared/config/routeConfig/routeConfig';
-import InfoIcon from 'shared/assets/icons/solid/information-circle.svg';
-import HomeIcon from 'shared/assets/icons/solid/home.svg';
-import UserIcon from 'shared/assets/icons/solid/user-circle.svg';
+
+import { SidebarItems } from 'widgets/Sidebar/model/items';
 import cls from './Sidebar.module.scss';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
     className?: string;
@@ -42,37 +42,11 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
                 {collapsed ? '>' : '<'}
             </Button>
             <div className={cls.items}>
-                <AppLink
-                    to={routePath.main}
-                    theme={AppLinkTheme.SECONDARY}
-                    className={cls.item}
-
-                >
-                    <HomeIcon className={cls.icon} />
-                    <span className={cls.link}>
-                        {t('Главная')}
-                    </span>
-                </AppLink>
-                <AppLink
-                    to={routePath.about}
-                    theme={AppLinkTheme.SECONDARY}
-                    className={cls.item}
-                >
-                    <InfoIcon className={cls.icon} />
-                    <span className={cls.link}>
-                        {t('О сайте')}
-                    </span>
-                </AppLink>
-                <AppLink
-                    to={routePath.profile}
-                    theme={AppLinkTheme.SECONDARY}
-                    className={cls.item}
-                >
-                    <UserIcon className={cls.icon} />
-                    <span className={cls.link}>
-                        {t('Профиль')}
-                    </span>
-                </AppLink>
+                {
+                    SidebarItems.map((item) => (
+                        <SidebarItem item={item} collapsed={collapsed} />
+                    ))
+                }
 
             </div>
             <div className={cls.switchers}>
