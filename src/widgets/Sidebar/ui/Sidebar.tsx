@@ -8,6 +8,7 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { routePath } from 'shared/config/routeConfig/routeConfig';
 import InfoIcon from 'shared/assets/icons/solid/information-circle.svg';
 import HomeIcon from 'shared/assets/icons/solid/home.svg';
+import UserIcon from 'shared/assets/icons/solid/user-circle.svg';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -60,6 +61,16 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
                     <InfoIcon className={cls.icon} />
                     <span className={cls.link}>
                         {t('О сайте')}
+                    </span>
+                </AppLink>
+                <AppLink
+                    to={routePath.profile}
+                    theme={AppLinkTheme.SECONDARY}
+                    className={cls.item}
+                >
+                    <UserIcon className={cls.icon} />
+                    <span className={cls.link}>
+                        {t('Профиль')}
                     </span>
                 </AppLink>
 
