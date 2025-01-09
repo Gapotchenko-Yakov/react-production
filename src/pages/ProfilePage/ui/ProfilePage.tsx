@@ -16,6 +16,7 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
     className?: string;
@@ -69,6 +70,7 @@ const ProfilePage = (props: ProfilePageProps) => {
             removeAfterUnmount
         >
             <div className={classNames('', {}, [className])}>
+                <ProfilePageHeader />
                 <ProfileCard
                     data={formData}
                     isLoading={isLoading}

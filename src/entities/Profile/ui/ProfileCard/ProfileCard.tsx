@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Input } from 'shared/ui/Input/Input';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Profile } from 'entities/Profile/model/types/profile';
 
 import Loader from 'shared/ui/Loader/Loader';
@@ -40,7 +40,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className])}>
+            <div className={classNames(cls.ProfileCard, {}, [className, cls.loading])}>
                 <Loader />
             </div>
         );
@@ -48,11 +48,12 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     if (error) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className])}>
+            <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке профиля')}
                     text={t('Попробуйте обновить страницу')}
+                    align={TextAlign.CENTER}
                 />
             </div>
         );
@@ -60,15 +61,6 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
-            <div className={cls.header}>
-                <Text title={t('Профиль')} />
-                <Button
-                    className={cls.editBtn}
-                    theme={ButtonTheme.OUTLINED}
-                >
-                    {t('Редактировать')}
-                </Button>
-            </div>
             <div className={cls.data}>
                 <Input
                     value={data?.first}
