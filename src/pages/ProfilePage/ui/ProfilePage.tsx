@@ -2,9 +2,14 @@ import {
     fetchProfileData,
     profileReducer,
     ProfileCard,
+    getProfileIsLoading,
+    getProfileError,
+    getProfileForm,
+    profileActions,
 } from 'entities/Profile';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -24,10 +29,38 @@ const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props;
     const { t } = useTranslation();
 
+    const formData = useSelector(getProfileForm);
+    const isLoading = useSelector(getProfileIsLoading);
+    const error = useSelector(getProfileError);
+
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchProfileData());
+    }, [dispatch]);
+
+    const onChangeFirstname = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ first: value || '' }));
+    }, [dispatch]);
+
+    const onChangeLastname = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ lastname: value || '' }));
+    }, [dispatch]);
+
+    const onChangeCity = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ city: value || '' }));
+    }, [dispatch]);
+
+    const onChangeAge = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
+    }, [dispatch]);
+
+    const onChangeUsername = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ username: value || '' }));
+    }, [dispatch]);
+
+    const onChangeAvatar = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ avatar: value || '' }));
     }, [dispatch]);
 
     return (
@@ -36,7 +69,17 @@ const ProfilePage = (props: ProfilePageProps) => {
             removeAfterUnmount
         >
             <div className={classNames('', {}, [className])}>
-                <ProfileCard />
+                <ProfileCard
+                    data={formData}
+                    isLoading={isLoading}
+                    error={error}
+                    onChangeFirstname={onChangeFirstname}
+                    onChangeLastname={onChangeLastname}
+                    onChangeAge={onChangeAge}
+                    onChangeCity={onChangeCity}
+                    onChangeUsername={onChangeUsername}
+                    onChangeAvatar={onChangeAvatar}
+                />
             </div>
         </DynamicModuleLoader>
     );
