@@ -9,6 +9,7 @@ import { Profile } from 'entities/Profile/model/types/profile';
 import Loader from 'shared/ui/Loader/Loader';
 import { memo } from 'react';
 import { Select } from 'shared/ui/Select/Select';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -23,6 +24,8 @@ interface ProfileCardProps {
   onChangeAge?: (value?: string)=> void;
   onChangeUsername?: (value?: string)=> void;
   onChangeAvatar?: (value?: string)=> void;
+  onChangeCurrency?: (currency: Currency)=> void;
+//   onChangeAvatar?: (value?: string)=> void;
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
@@ -38,6 +41,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         onChangeAge,
         onChangeUsername,
         onChangeAvatar,
+        onChangeCurrency,
     } = props;
     const { t } = useTranslation('profile');
 
@@ -107,15 +111,11 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readonly={readonly}
                 />
-                <Select
-                    label={t('Укажите валюту')}
+                <CurrencySelect
                     className={cls.input}
                     value={data?.currency}
                     readonly={readonly}
-                    options={[
-                        { value: '123', content: 'First' },
-                        { value: '1234', content: 'Second' },
-                    ]}
+                    onChange={onChangeCurrency}
 
                 />
             </div>
