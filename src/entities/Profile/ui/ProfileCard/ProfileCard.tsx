@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Input } from 'shared/ui/Input/Input';
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
@@ -65,9 +65,22 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         );
     }
 
+    const mods: Mods = {
+        [cls.editing]: !readonly,
+    };
+
     return (
-        <div className={classNames(cls.ProfileCard, {}, [className])}>
+        <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.data}>
+                {data?.avatar
+                && (
+                    <div className={cls.avatarWrapper}>
+                        <img
+                            src={data?.avatar}
+                            alt={data?.username}
+                        />
+                    </div>
+                )}
                 <Input
                     value={data?.first}
                     placeholder={t('Ваше имя')}

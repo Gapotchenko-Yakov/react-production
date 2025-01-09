@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useCallback } from 'react';
+import { ChangeEvent, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 
@@ -29,7 +29,7 @@ export const Select = (props: SelectProps) => {
 
     const optionsList = options?.map((opt) => (
         <option
-            className={cls.options}
+            className={cls.option}
             key={opt.value}
             value={opt.value}
         >
