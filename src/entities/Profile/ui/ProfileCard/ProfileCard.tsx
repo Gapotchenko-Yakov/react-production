@@ -8,6 +8,7 @@ import Loader from 'shared/ui/Loader/Loader';
 import { memo } from 'react';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -75,9 +76,10 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 {data?.avatar
                 && (
                     <div className={cls.avatarWrapper}>
-                        <img
+                        <Avatar
                             src={data?.avatar}
                             alt={data?.username}
+                            size={150}
                         />
                     </div>
                 )}
