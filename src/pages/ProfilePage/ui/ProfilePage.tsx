@@ -6,6 +6,7 @@ import {
     getProfileError,
     getProfileForm,
     profileActions,
+    getProfileReadonly,
 } from 'entities/Profile';
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -29,12 +30,12 @@ const reducersList: ReducersList = {
 const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props;
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
 
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
-
-    const dispatch = useAppDispatch();
+    const readonly = useSelector(getProfileReadonly);
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -75,6 +76,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                     data={formData}
                     isLoading={isLoading}
                     error={error}
+                    readonly={readonly}
                     onChangeFirstname={onChangeFirstname}
                     onChangeLastname={onChangeLastname}
                     onChangeAge={onChangeAge}
