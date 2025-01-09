@@ -1,15 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useSelector } from 'react-redux';
 import { Input } from 'shared/ui/Input/Input';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Profile } from 'entities/Profile/model/types/profile';
 
 import Loader from 'shared/ui/Loader/Loader';
 import { memo } from 'react';
-import { Select } from 'shared/ui/Select/Select';
 import { Currency, CurrencySelect } from 'entities/Currency';
+import { Country, CountrySelect } from 'entities/Country';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -25,7 +23,7 @@ interface ProfileCardProps {
   onChangeUsername?: (value?: string)=> void;
   onChangeAvatar?: (value?: string)=> void;
   onChangeCurrency?: (currency: Currency)=> void;
-//   onChangeAvatar?: (value?: string)=> void;
+  onChangeCountry?: (country: Country)=> void;
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
@@ -42,6 +40,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         onChangeUsername,
         onChangeAvatar,
         onChangeCurrency,
+        onChangeCountry,
     } = props;
     const { t } = useTranslation('profile');
 
@@ -116,7 +115,12 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     value={data?.currency}
                     readonly={readonly}
                     onChange={onChangeCurrency}
-
+                />
+                <CountrySelect
+                    className={cls.input}
+                    value={data?.country}
+                    readonly={readonly}
+                    onChange={onChangeCountry}
                 />
             </div>
         </div>

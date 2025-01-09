@@ -6,7 +6,7 @@ import { Currency } from '../../model/types/currency';
 
 interface CurrencySelectProps {
   className?: string;
-  value?: string;
+  value?: Currency;
   onChange?: (value: Currency) => void;
   readonly?: boolean;
 }

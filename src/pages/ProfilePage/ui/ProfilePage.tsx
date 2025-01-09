@@ -18,6 +18,7 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
@@ -70,7 +71,7 @@ const ProfilePage = (props: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({ currency }));
     }, [dispatch]);
 
-    const onChangeCountry = useCallback((country) => {
+    const onChangeCountry = useCallback((country: Country) => {
         dispatch(profileActions.updateProfile({ country }));
     }, [dispatch]);
 
@@ -93,7 +94,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                     onChangeUsername={onChangeUsername}
                     onChangeAvatar={onChangeAvatar}
                     onChangeCurrency={onChangeCurrency}
-                    // onChangeCountry={onChangeCountry}
+                    onChangeCountry={onChangeCountry}
                 />
             </div>
         </DynamicModuleLoader>
