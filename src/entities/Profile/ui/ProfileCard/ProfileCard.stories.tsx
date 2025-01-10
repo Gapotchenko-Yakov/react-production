@@ -29,7 +29,6 @@ Light.args = {
         avatar: AvatarImg,
     },
 };
-Light.decorators = [];
 
 export const Dark = Template.bind({});
 Dark.args = {
@@ -47,3 +46,13 @@ Dark.args = {
 Dark.decorators = [
     ThemeDecorator(Theme.DARK),
 ];
+
+export const WithError = Template.bind({});
+WithError.args = {
+    error: 'Some error',
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+    isLoading: true,
+};
