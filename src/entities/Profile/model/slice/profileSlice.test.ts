@@ -31,19 +31,16 @@ describe('profileSlice', () => {
     });
 
     test('test cancel edit', () => {
-        const state: DeepPartial<ProfileSchema> = {
-            readonly: false,
-            form: {
-                username: '',
-            },
-        };
+        const state: DeepPartial<ProfileSchema> = { data, form: { username: '' } };
 
         expect(profileReducer(
             state as ProfileSchema,
             profileActions.cancelEdit(),
         )).toEqual({
             readonly: true,
-            from: data,
+            validateErrors: undefined,
+            data,
+            form: data,
         });
     });
 
