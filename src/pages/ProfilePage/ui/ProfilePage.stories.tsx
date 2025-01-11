@@ -4,8 +4,10 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import AvatarImg from 'shared/assets/tests/storybook.jpg';
+// import AvatarImg from 'shared/assets/tests/storybook.jpg';
 import ProfilePage from './ProfilePage';
+
+const AvatarImg = 'https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg'; // TODO
 
 export default {
     title: 'pages/ProfilePage',

@@ -3,8 +3,10 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/ThemeProvider';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import AvatarImg from 'shared/assets/tests/storybook.jpg';
+// import AvatarImg from 'shared/assets/tests/storybook.jpg';
 import { ProfileCard } from './ProfileCard';
+
+const AvatarImg = 'https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg'; // TODO
 
 export default {
     title: 'entities/ProfileCard',
