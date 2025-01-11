@@ -41,8 +41,15 @@ export default ({ config }: {config: webpack.Configuration}) => {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     });
+    config!.module!.rules.push(buildCssLoader(true));
 
-    config!.module!.rules!.push(buildCssLoader(true));
+    config!.module!.rules.push({
+        test: /\.(jpg|jpeg|png|gif|webp)$/,
+        type: 'asset/resource',
+        generator: {
+            filename: 'static/media/[name].[contenthash][ext][query]',
+        },
+    });
 
     config!.plugins!.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),
