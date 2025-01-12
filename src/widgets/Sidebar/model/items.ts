@@ -1,8 +1,9 @@
 import { SVGProps, VFC } from 'react';
 import { routePath } from 'shared/config/routeConfig/routeConfig';
-import InfoIcon from 'shared/assets/icons/solid/information-circle.svg';
-import HomeIcon from 'shared/assets/icons/solid/home.svg';
-import UserIcon from 'shared/assets/icons/solid/user-circle.svg';
+import AboutIcon from 'shared/assets/icons/solid/information-circle.svg';
+import MainIcon from 'shared/assets/icons/solid/home.svg';
+import ProfileIcon from 'shared/assets/icons/solid/user-circle.svg';
+import ArticleIcon from 'shared/assets/icons/outline/document-text.svg';
 
 export interface SidebarItemType {
     path: string;
@@ -14,18 +15,24 @@ export interface SidebarItemType {
 export const SidebarItems: SidebarItemType[] = [
     {
         path: routePath.main,
+        Icon: MainIcon,
         text: 'Главная',
-        Icon: HomeIcon,
     },
     {
         path: routePath.about,
+        Icon: AboutIcon,
         text: 'О сайте',
-        Icon: InfoIcon,
     },
     {
         path: routePath.profile,
+        Icon: ProfileIcon,
         text: 'Профиль',
-        Icon: UserIcon,
+        authOnly: true,
+    },
+    {
+        path: routePath.articles,
+        Icon: ArticleIcon,
+        text: 'Статьи',
         authOnly: true,
     },
 ];
