@@ -1,4 +1,7 @@
 {
+  "ARTICLE DETAILS FOR": "ARTICLE DETAILS FOR",
+  "CalendarIcon": "CalendarIcon",
+  "EyeIcon": "EyeIcon",
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam": {
       "": ""
@@ -33,6 +36,9 @@
   "Попробуйте обновить страницу": "Попробуйте обновить страницу",
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
   "Произошла ошибка при загрузке профиля": "Произошла ошибка при загрузке профиля",
+  "Произошла ошибка при загрузке статьи": {
+    "": ""
+  },
   "Профиль": "Профиль",
   "Редактировать": "Редактировать",
   "Серверная ошибка при сохранении": "Серверная ошибка при сохранении",
