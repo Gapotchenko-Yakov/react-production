@@ -9,6 +9,7 @@ import Loader from 'shared/ui/Loader/Loader';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { ArticleBlock, ArticleBlockType } from 'entities/Article/model/types/article';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
@@ -81,7 +82,15 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     let content;
 
     if (isLoading) {
-        content = <Loader />;
+        content = (
+            <>
+                <Skeleton className={cls.avatar} width={200} height={200} borderRadius="50%" />
+                <Skeleton className={cls.title} width={300} height={32} />
+                <Skeleton className={cls.skeleton} width={600} height={24} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+            </>
+        );
     } else if (error) {
         content = (
             <Text
@@ -117,6 +126,20 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                         title={article?.createdAt}
                     />
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 {article?.blocks.map(renderBlock)}
             </>
         );
