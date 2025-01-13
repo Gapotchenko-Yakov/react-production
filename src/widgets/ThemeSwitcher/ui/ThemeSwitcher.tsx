@@ -4,6 +4,7 @@ import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import DarkIcon from 'shared/assets/icons/outline/moon.svg';
 import LightIcon from 'shared/assets/icons/outline/sun.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Icon, IconSize } from 'shared/ui/Icon/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -19,9 +20,9 @@ const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
             theme={ButtonTheme.CLEAR}
         >
             {theme === Theme.DARK ? (
-                <DarkIcon width="40px" height="40px" />
+                <Icon Svg={DarkIcon} size={IconSize.XL} />
             ) : (
-                <LightIcon width="40px" height="40px" />
+                <Icon Svg={LightIcon} size={IconSize.XL} />
             )}
         </Button>
     );

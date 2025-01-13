@@ -3,6 +3,12 @@
     padding: 7px 15px;
     color: var(--primary-color);
 
+    &:hover {
+        opacity: 0.8;
+        fill-opacity: 80%;
+        stroke-opacity: 80%;
+    }
+
     &.clear,
     &.clearInverted {
         padding: 0;
