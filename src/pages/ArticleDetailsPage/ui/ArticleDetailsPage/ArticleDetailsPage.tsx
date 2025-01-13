@@ -11,7 +11,7 @@ interface ArticleDetailsPageProps {
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article-details');
     const { id } = useParams<{id: string}>();
 
     if (!id) {
@@ -24,7 +24,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     return (
         <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-            <ArticleDetails id={id || '1'} />
+            <ArticleDetails id={id} />
         </div>
     );
 };

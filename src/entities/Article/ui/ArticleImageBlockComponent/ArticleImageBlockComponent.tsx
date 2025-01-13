@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
 import cls from './ArticleImageBlockComponent.module.scss';
@@ -9,7 +9,7 @@ interface ArticleImageBlockComponentProps {
   block: ArticleImageBlock;
 }
 
-export const ArticleImageBlockComponent = (props: ArticleImageBlockComponentProps) => {
+export const ArticleImageBlockComponent = memo((props: ArticleImageBlockComponentProps) => {
     const { className, block } = props;
 
     return (
@@ -21,4 +21,4 @@ export const ArticleImageBlockComponent = (props: ArticleImageBlockComponentProp
             )}
         </div>
     );
-};
+});

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import cls from './ArticleTextBlockComponent.module.scss';
@@ -9,17 +9,11 @@ interface ArticleTextBlockComponentProps {
   block: ArticleTextBlock;
 }
 
-export const ArticleTextBlockComponent = (props: ArticleTextBlockComponentProps) => {
+export const ArticleTextBlockComponent = memo((props: ArticleTextBlockComponentProps) => {
     const { className, block } = props;
 
     return (
         <div className={classNames(cls.ArticleTextBlockComponent, {}, [className])}>
-            {block.title && (
-                <Text
-                    title={block.title}
-                    className={cls.title}
-                />
-            )}
             {block.title && (
                 <Text
                     title={block.title}
@@ -31,4 +25,4 @@ export const ArticleTextBlockComponent = (props: ArticleTextBlockComponentProps)
             ))}
         </div>
     );
-};
+});

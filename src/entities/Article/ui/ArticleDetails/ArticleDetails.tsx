@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -32,7 +32,7 @@ const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
 };
 
-export const ArticleDetails = (props: ArticleDetailsProps) => {
+export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const {
         className,
         id,
@@ -144,4 +144,4 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
             </div>
         </DynamicModuleLoader>
     );
-};
+});
