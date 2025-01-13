@@ -11,6 +11,7 @@ import { ArticleBlock, ArticleBlockType } from 'entities/Article/model/types/art
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import EyeIcon from 'shared/assets/icons/outline/eye.svg';
 import CalendarIcon from 'shared/assets/icons/outline/calendar.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
@@ -116,14 +117,14 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                     size={TextSize.L}
                 />
                 <div className={cls.articleInfo}>
-                    <EyeIcon className={cls.icon} />
+                    <Icon className={cls.icon} Svg={EyeIcon} />
                     <Text
                         text={String(article?.views)}
                         size={TextSize.M}
                     />
                 </div>
                 <div className={cls.articleInfo}>
-                    <CalendarIcon className={cls.icon} />
+                    <Icon className={cls.icon} Svg={CalendarIcon} />
                     <Text
                         text={article?.createdAt}
                     />

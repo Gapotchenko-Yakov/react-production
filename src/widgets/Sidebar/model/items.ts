@@ -3,7 +3,7 @@ import { routePath } from 'shared/config/routeConfig/routeConfig';
 import AboutIcon from 'shared/assets/icons/solid/information-circle.svg';
 import MainIcon from 'shared/assets/icons/solid/home.svg';
 import ProfileIcon from 'shared/assets/icons/solid/user-circle.svg';
-import ArticleIcon from 'shared/assets/icons/outline/document-text.svg';
+import ArticleIcon from 'shared/assets/icons/solid/document-text.svg';
 
 export interface SidebarItemType {
     path: string;
