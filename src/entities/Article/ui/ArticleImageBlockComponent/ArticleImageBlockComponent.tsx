@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
 import cls from './ArticleImageBlockComponent.module.scss';
 import { ArticleImageBlock } from '../../model/types/article';
 
@@ -14,7 +15,10 @@ export const ArticleImageBlockComponent = (props: ArticleImageBlockComponentProp
     return (
         // eslint-disable-next-line i18next/no-literal-string
         <div className={classNames(cls.ArticleImageBlockComponent, {}, [className])}>
-            Article image block component
+            <img src={block.src} alt={block.title} className={cls.img} />
+            {block.title && (
+                <Text text={block.title} align={TextAlign.CENTER} />
+            )}
         </div>
     );
 };
