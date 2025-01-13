@@ -5,11 +5,12 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
-import Loader from 'shared/ui/Loader/Loader';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { ArticleBlock, ArticleBlockType } from 'entities/Article/model/types/article';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import EyeIcon from 'shared/assets/icons/outline/eye.svg';
+import CalendarIcon from 'shared/assets/icons/outline/calendar.svg';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
@@ -53,25 +54,25 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         case ArticleBlockType.CODE:
             return (
                 <ArticleCodeBlockComponent
+                    key={block.id}
                     block={block}
                     className={cls.block}
-
                 />
             );
         case ArticleBlockType.IMAGE:
             return (
                 <ArticleImageBlockComponent
+                    key={block.id}
                     block={block}
                     className={cls.block}
-
                 />
             );
         case ArticleBlockType.TEXT:
             return (
                 <ArticleTextBlockComponent
+                    key={block.id}
                     block={block}
                     className={cls.block}
-
                 />
             );
         default:
@@ -115,15 +116,16 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                     size={TextSize.L}
                 />
                 <div className={cls.articleInfo}>
-                    <span className={cls.icon}>{t('EyeIcon')}</span>
+                    <EyeIcon className={cls.icon} />
                     <Text
-                        title={String(article?.views)}
+                        text={String(article?.views)}
+                        size={TextSize.M}
                     />
                 </div>
                 <div className={cls.articleInfo}>
-                    <span className={cls.icon}>{t('CalendarIcon')}</span>
+                    <CalendarIcon className={cls.icon} />
                     <Text
-                        title={article?.createdAt}
+                        text={article?.createdAt}
                     />
                 </div>
                 {article?.blocks.map(renderBlock)}
@@ -132,7 +134,6 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     }
 
     return (
-        // eslint-disable-next-line i18next/no-literal-string
         <DynamicModuleLoader
             reducers={reducers}
             removeAfterUnmount
