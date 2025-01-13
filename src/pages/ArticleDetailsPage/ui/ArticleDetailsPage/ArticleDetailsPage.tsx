@@ -14,8 +14,15 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { t } = useTranslation();
     const { id } = useParams<{id: string}>();
 
+    if (!id) {
+        return (
+            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                {t('Статья не найдена')}
+            </div>
+        );
+    }
+
     return (
-        // eslint-disable-next-line i18next/no-literal-string
         <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
             <ArticleDetails id={id || '1'} />
         </div>

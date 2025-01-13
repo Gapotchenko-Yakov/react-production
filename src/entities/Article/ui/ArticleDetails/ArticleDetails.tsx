@@ -126,20 +126,6 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                         title={article?.createdAt}
                     />
                 </div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
                 {article?.blocks.map(renderBlock)}
             </>
         );
