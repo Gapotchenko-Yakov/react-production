@@ -32,6 +32,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                 {
                     id: '1',
                     text: 'some comment',
+                    articleId: '1',
                     user: {
                         id: '1',
                         username: 'admin',
@@ -42,6 +43,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                 {
                     id: '2',
                     text: 'some comment 2',
+                    articleId: '1',
                     user: {
                         id: '1',
                         username: 'admin',
@@ -52,6 +54,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                 {
                     id: '3',
                     text: 'some comment 3',
+                    articleId: '1',
                     user: {
                         id: '1',
                         username: 'admin',
