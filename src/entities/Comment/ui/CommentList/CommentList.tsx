@@ -9,12 +9,14 @@ import { CommentCard } from '../CommentCard/CommentCard';
 interface CommentListProps {
   className?: string;
   comments?: Comment[];
+  isLoading?: boolean;
 }
 
 export const CommentList = (props: CommentListProps) => {
     const {
         className,
         comments,
+        isLoading,
     } = props;
 
     const { t } = useTranslation();
@@ -27,6 +29,7 @@ export const CommentList = (props: CommentListProps) => {
                         <CommentCard
                             key={comment.id}
                             comment={comment}
+                            isLoading={isLoading}
                             className={cls.comment}
                         />
                     ))
