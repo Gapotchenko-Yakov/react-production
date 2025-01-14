@@ -6,9 +6,12 @@ import { ArticleDetails } from 'entities/Article';
 import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
+import {
+    articleDetailsCommentsReducer,
+    getArticleComments,
+} from 'pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice';
 import { useSelector } from 'react-redux';
-import { getArticleCommentsData, getArticleCommentsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/comments';
+import { getArticleCommentsIsLoading } from 'pages/ArticleDetailsPage/model/selectors/comments';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
@@ -29,7 +32,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { t } = useTranslation('article-details');
     const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
-    const comments = useSelector(getArticleCommentsData);
+    const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 
     useInitialEffect(() => {
