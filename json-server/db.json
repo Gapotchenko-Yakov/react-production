@@ -150,6 +150,18 @@
       "userId": "2",
       "text": "asdasdasd",
       "id": "MVvGQoZ"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "test 123",
+      "id": "2T1krfo"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "diff test",
+      "id": "PG45ND1"
     }
   ],
   "users": [
@@ -158,7 +170,7 @@
       "username": "admin",
       "password": "123",
       "role": "ADMIN",
-      "avatar": "https: //pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg"
+      "avatar": "https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg"
     },
     {
       "id": "2",
@@ -178,7 +190,7 @@
       "country": "Belarus",
       "city": "Moscow",
       "username": "admin213",
-      "avatar": "https: //pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg"
+      "avatar": "https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg"
     },
     {
       "id": "2",

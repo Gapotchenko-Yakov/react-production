@@ -1,6 +1,22 @@
-import { ComponentMeta } from "@storybook/react";
-
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import AddCommentForm from './AddCommentForm';
 
 export default {
+    title: 'AddCommentForm',
+    component: AddCommentForm,
+    argTypes: {
+        backgroundColor: {
+            control: 'color',
+        },
+    },
+} as ComponentMeta<typeof AddCommentForm>;
 
-} as ComponentMeta<typeof Add
+const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
+
+export const Normal = Template.bind({});
+Normal.args = {
+
+};
+Normal.decorators = [
+
+];
