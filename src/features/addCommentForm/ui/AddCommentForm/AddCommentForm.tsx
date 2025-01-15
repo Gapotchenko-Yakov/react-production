@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { getAddCommentFormText } from 'features/addCommentForm/model/selectors/addCommentFormSelectors';
 import { useTranslation } from 'react-i18next';
 import cls from './AddCommentForm.module.scss';
-import { addCommentsFormActions, addCommentsFormReducer } from '../../model/slices/addCommentFormSlice';
+import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
 
 interface AddCommentFormProps {
   className?: string;
@@ -16,7 +16,7 @@ interface AddCommentFormProps {
 }
 
 const reducers : ReducersList = {
-    addCommentForm: addCommentsFormReducer,
+    addCommentForm: addCommentFormReducer,
 };
 
 const AddCommentForm = memo((props: AddCommentFormProps) => {
@@ -31,7 +31,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
     const dispatch = useAppDispatch();
 
     const onCommentTextChange = useCallback((text: string) => {
-        dispatch(addCommentsFormActions.setText(text));
+        dispatch(addCommentFormActions.setText(text));
     }, [dispatch]);
 
     const onSendHandler = useCallback(() => {

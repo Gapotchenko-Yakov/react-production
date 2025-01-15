@@ -7,8 +7,8 @@ const initialState: AddCommentFormSchema = {
     text: undefined,
 };
 
-export const addCommentsForm = createSlice({
-    name: 'addCommentsFormSlice',
+export const addCommentForm = createSlice({
+    name: 'addCommentFormSlice',
     initialState,
     reducers: {
         setText: (state, action: PayloadAction<string>) => {
@@ -17,5 +17,5 @@ export const addCommentsForm = createSlice({
     },
 });
 
-export const { actions: addCommentsFormActions } = addCommentsForm;
-export const { reducer: addCommentsFormReducer } = addCommentsForm;
+export const { actions: addCommentFormActions } = addCommentForm;
+export const { reducer: addCommentFormReducer } = addCommentForm;
