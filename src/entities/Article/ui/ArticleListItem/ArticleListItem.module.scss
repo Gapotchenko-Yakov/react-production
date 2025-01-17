@@ -53,19 +53,21 @@
                 display: none;
             }
 
-            &:hover {
-                opacity: 0.8;
-                transform: scale(1.01);
-
-                .date {
-                    display: block;
-                }
-            }
-
             .img {
                 width: 200px;
                 height: 200px;
                 object-fit: cover;
+            }
+        }
+
+        &:hover {
+            opacity: 0.8;
+            transform: scale(1.01);
+
+            .imageWrapper {
+                .date {
+                    display: block;
+                }
             }
         }
 

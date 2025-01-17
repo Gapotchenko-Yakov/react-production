@@ -8,6 +8,7 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { routePath } from 'shared/config/routeConfig/routeConfig';
+import { Card } from 'shared/ui/Card/Card';
 import cls from './ArticleListItem.module.scss';
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
@@ -50,7 +51,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
         return (
             <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-                <div className={cls.card}>
+                <Card className={cls.card}>
                     <div className={cls.header}>
                         <Avatar size={30} src={article.user.avatar} />
                         <Text text={article.user.username} className={cls.username} />
@@ -75,14 +76,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         </Button>
                         {views}
                     </div>
-                </div>
+                </Card>
             </div>
         );
     }
 
     return (
         <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-            <div className={cls.card} onClick={onOpenArticle}>
+            <Card className={cls.card} onClick={onOpenArticle}>
                 <div className={cls.imageWrapper}>
                     <Text className={cls.date} text={article.createdAt} />
                     <img className={cls.img} alt={article.title} src={article.img} />
@@ -93,7 +94,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     {views}
                 </div>
                 <Text className={cls.title} text={article.title} />
-            </div>
+            </Card>
         </div>
     );
 });
