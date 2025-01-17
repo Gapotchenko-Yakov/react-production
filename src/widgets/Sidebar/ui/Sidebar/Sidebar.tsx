@@ -1,9 +1,12 @@
-import { FC, useCallback, useState } from 'react';
+import {
+    FC, memo, useCallback, useMemo, useState,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
-import { SidebarItems } from 'widgets/Sidebar/model/items';
+import { getSidebarItems } from 'widgets/Sidebar/model/selectors/getSidebarItems';
+import { useSelector } from 'react-redux';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
@@ -11,12 +14,22 @@ interface SidebarProps {
     className?: string;
 }
 
-const Sidebar: FC<SidebarProps> = ({ className }) => {
+const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
     const onToggle = useCallback(() => {
         setCollapsed((prev) => !prev);
     }, []);
+
+    const sidebarItemsList = useSelector(getSidebarItems);
+
+    const itemsList = useMemo(() => sidebarItemsList.map((item) => (
+        <SidebarItem
+            item={item}
+            collapsed={collapsed}
+            key={item.path}
+        />
+    )), [sidebarItemsList, collapsed]);
 
     return (
         <div
@@ -38,13 +51,7 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
             </Button>
             <div className={cls.items}>
                 {
-                    SidebarItems.map((item) => (
-                        <SidebarItem
-                            item={item}
-                            collapsed={collapsed}
-                            key={item.path}
-                        />
-                    ))
+                    itemsList
                 }
             </div>
             <div className={cls.switchers}>
@@ -53,6 +60,6 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Sidebar;
