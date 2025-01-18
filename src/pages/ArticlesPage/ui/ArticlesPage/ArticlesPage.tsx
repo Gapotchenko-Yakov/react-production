@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import { ArticleList } from 'entities/Article';
+import { memo, useCallback } from 'react';
+import { ArticleList, ArticleView, ArticleViewSelector } from 'entities/Article';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -39,11 +39,19 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         dispatch(articlesPageActions.initState());
     });
 
+    const onChangeView = useCallback((view: ArticleView) => {
+        dispatch(articlesPageActions.setView(view));
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader
             reducers={reducers}
         >
             <div className={classNames(cls.ArticlesPage, {}, [className])}>
+                <ArticleViewSelector
+                    view={view}
+                    onViewClick={onChangeView}
+                />
                 <ArticleList
                     isLoading={isLoading}
                     articles={articles}
