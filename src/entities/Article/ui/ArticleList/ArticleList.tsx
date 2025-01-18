@@ -8,8 +8,8 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 interface ArticleListProps {
   className?: string;
   articles: Article[];
-  isLoading: boolean;
-  view: ArticleView;
+  isLoading?: boolean;
+  view?: ArticleView;
 }
 
 const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
