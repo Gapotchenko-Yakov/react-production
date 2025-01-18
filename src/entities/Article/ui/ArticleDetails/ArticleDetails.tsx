@@ -13,6 +13,7 @@ import EyeIcon from 'shared/assets/icons/outline/eye.svg';
 import CalendarIcon from 'shared/assets/icons/outline/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useNavigate } from 'react-router-dom';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
