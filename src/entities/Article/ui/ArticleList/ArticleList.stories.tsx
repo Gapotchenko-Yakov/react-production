@@ -1,5 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import {
+    Article, ArticleBlockType, ArticleType, ArticleView,
+} from 'entities/Article/model/types/article';
 import { ArticleList } from './ArticleList';
 
 const article:Article = {
@@ -47,15 +49,6 @@ const article:Article = {
     /* eslint-enable */
 };
 
-const articles: Article[] = [
-    { ...article, id: '1' },
-    { ...article, id: '2' },
-    { ...article, id: '3' },
-    { ...article, id: '4' },
-    { ...article, id: '5' },
-    { ...article, id: '6' },
-];
-
 export default {
     title: 'entities/ArticleList',
     component: ArticleList,
@@ -68,10 +61,40 @@ export default {
 
 const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
 
-export const Normal = Template.bind({});
-Normal.args = {
-    articles,
+export const LoadingBig = Template.bind({});
+LoadingBig.args = {
+    articles: [],
+    isLoading: true,
+    view: ArticleView.BIG,
 };
-Normal.decorators = [
 
-];
+export const LoadingSmall = Template.bind({});
+LoadingSmall.args = {
+    articles: [],
+    isLoading: true,
+    view: ArticleView.SMALL,
+};
+
+export const ListSmall = Template.bind({});
+ListSmall.args = {
+    articles: new Array(9)
+        .fill(0)
+        .map((item, index) => ({
+            ...article,
+            id: String(index),
+        })),
+    isLoading: false,
+    view: ArticleView.SMALL,
+};
+
+export const ListBig = Template.bind({});
+ListBig.args = {
+    articles: new Array(9)
+        .fill(0)
+        .map((item, index) => ({
+            ...article,
+            id: String(index),
+        })),
+    isLoading: false,
+    view: ArticleView.BIG,
+};

@@ -70,9 +70,9 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     return (
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
             <ArticleList
-                isLoading={false}
+                isLoading
                 articles={articles}
-                view={ArticleView.SMALL}
+                view={ArticleView.BIG}
             />
         </div>
     );
