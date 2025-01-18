@@ -14,8 +14,8 @@ export const Page = memo((props: PageProps) => {
     } = props;
 
     return (
-        <div className={classNames(cls.Page, {}, [className])}>
+        <section className={classNames(cls.Page, {}, [className])}>
             {children}
-        </div>
+        </section>
     );
 });

@@ -8,6 +8,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page/Page';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
 import {
     getArticlesPageError,
@@ -50,7 +51,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         <DynamicModuleLoader
             reducers={reducers}
         >
-            <div className={classNames(cls.ArticlesPage, {}, [className])}>
+            <Page className={classNames(cls.ArticlesPage, {}, [className])}>
                 <ArticleViewSelector
                     view={view}
                     onViewClick={onChangeView}
@@ -60,7 +61,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     articles={articles}
                     view={view}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
