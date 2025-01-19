@@ -32,7 +32,7 @@ const Sidebar = memo(({ className }: SidebarProps) => {
     )), [sidebarItemsList, collapsed]);
 
     return (
-        <div
+        <menu
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
                 className,
             ])}
@@ -58,7 +58,7 @@ const Sidebar = memo(({ className }: SidebarProps) => {
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang} />
             </div>
-        </div>
+        </menu>
     );
 });
 
