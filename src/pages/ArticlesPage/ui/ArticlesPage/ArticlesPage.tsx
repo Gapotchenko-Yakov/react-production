@@ -7,9 +7,13 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
-import { useParams } from 'react-router-dom';
 import { Page } from 'shared/ui/Page/Page';
-import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import {
+    articlesPageActions,
+    articlesPageReducer,
+    getArticles,
+} from '../../model/slice/articlesPageSlice';
 import {
     getArticlesPageError,
     getArticlesPageHasMore,
@@ -52,13 +56,8 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch]);
 
     const onLoadNextPart = useCallback(() => {
-        if (hasMore && !isLoading) {
-            dispatch(articlesPageActions.setPage(page + 1));
-            dispatch(fetchArticlesList({
-                page: page + 1,
-            }));
-        }
-    }, [dispatch, page, hasMore, isLoading]);
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
 
     return (
         <DynamicModuleLoader
