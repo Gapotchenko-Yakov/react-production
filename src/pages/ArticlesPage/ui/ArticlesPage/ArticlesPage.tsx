@@ -17,6 +17,7 @@ import {
 import {
     getArticlesPageError,
     getArticlesPageHasMore,
+    getArticlesPageInited,
     getArticlesPageIsLoading,
     getArticlesPageNum,
     getArticlesPageView,
@@ -39,16 +40,17 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
     const articles = useSelector(getArticles.selectAll);
-    const page = useSelector(getArticlesPageNum);
-    const hasMore = useSelector(getArticlesPageHasMore);
+    const inited = useSelector(getArticlesPageInited);
 
     const dispatch = useAppDispatch();
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        if (!inited) {
+            dispatch(articlesPageActions.initState());
+            dispatch(fetchArticlesList({
+                page: 1,
+            }));
+        }
     });
 
     const onChangeView = useCallback((view: ArticleView) => {
@@ -62,6 +64,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     return (
         <DynamicModuleLoader
             reducers={reducers}
+            removeAfterUnmount={false}
         >
             <Page
                 onScrollEnd={onLoadNextPart}
