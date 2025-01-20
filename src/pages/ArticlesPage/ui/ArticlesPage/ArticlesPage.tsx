@@ -10,6 +10,7 @@ import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticl
 import { Page } from 'widgets/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
+import { useSearchParams } from 'react-router-dom';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -45,13 +46,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     const dispatch = useAppDispatch();
 
-    useInitialEffect(() => {
-        dispatch(initArticlesPage());
-    });
+    const [searchParams] = useSearchParams();
 
-    const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(initArticlesPage(searchParams));
+    });
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
