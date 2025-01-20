@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
-    ArticleSortField, ArticleSortSelector, ArticleType, ArticleViewSelector,
+    ArticleSortField, ArticleSortSelector, ArticleType, ArticleView, ArticleViewSelector,
 } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
@@ -42,6 +42,10 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
 
     const debouncedFetchData = useDebounce(fetchData, 500);
 
+    const onChangeView = useCallback((view: ArticleView) => {
+        dispatch(articlesPageActions.setView(view));
+    }, [dispatch]);
+
     const onChangeOrder = useCallback((newOrder: SortOrder) => {
         dispatch(articlesPageActions.setOrder(newOrder));
         dispatch(articlesPageActions.setPage(1));
@@ -78,6 +82,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                 />
                 <ArticleViewSelector
                     view={view}
+                    onViewClick={onChangeView}
                 />
             </div>
             <Card
