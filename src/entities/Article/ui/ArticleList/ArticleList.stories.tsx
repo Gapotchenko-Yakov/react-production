@@ -50,7 +50,7 @@ const article:Article = {
 };
 
 export default {
-    title: 'entities/ArticleList',
+    title: 'entities/article/ArticleList',
     component: ArticleList,
     argTypes: {
         backgroundColor: {

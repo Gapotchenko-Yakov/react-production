@@ -1,17 +1,17 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Page } from './Page';
+import { Tabs } from './Tabs';
 
 export default {
-    title: 'widgets/Page',
-    component: Page,
+    title: 'shared/Tabs',
+    component: Tabs,
     argTypes: {
         backgroundColor: {
             control: 'color',
         },
     },
-} as ComponentMeta<typeof Page>;
+} as ComponentMeta<typeof Tabs>;
 
-const Template: ComponentStory<typeof Page> = (args) => <Page {...args} />;
+const Template: ComponentStory<typeof Tabs> = (args) => <Tabs {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {

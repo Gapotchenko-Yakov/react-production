@@ -1,7 +1,7 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
-    ArticleSortField, ArticleSortSelector, ArticleType, ArticleView, ArticleViewSelector,
+    ArticleSortField, ArticleSortSelector, ArticleType, ArticleTypeTabs, ArticleView, ArticleViewSelector,
 } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
@@ -15,6 +15,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useTranslation } from 'react-i18next';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
@@ -70,7 +71,6 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
         fetchData();
     }, [dispatch, fetchData]);
 
-    /* eslint-disable i18next/no-literal-string */
     return (
         <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -95,8 +95,11 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                 />
             </Card>
 
-            <div className={cls.tabs}>Articles Tabs</div>
+            <ArticleTypeTabs
+                value={type}
+                onChangeType={onChangeType}
+                className={cls.tabs}
+            />
         </div>
     );
-    /* eslint-enable i18next/no-literal-string */
 });
