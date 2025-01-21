@@ -1,10 +1,7 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Comment } from 'entities/Comment';
-import { Article } from 'entities/Article';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
-import {
-    fetchArticleRecommendations,
-} from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { Article } from 'entities/Article';
+import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { ArticleDetailsRecommendationsSchema } from '../types/ArticleDetailsRecommendationsSchema';
 
 const recommendationsAdapter = createEntityAdapter<Article>({
@@ -15,7 +12,7 @@ export const getArticleRecommendations = recommendationsAdapter.getSelectors<Sta
     (state) => state.articleDetailsRecommendations || recommendationsAdapter.getInitialState(),
 );
 
-export const articleDetailsComments = createSlice({
+const articleDetailsPageRecommendationsSlice = createSlice({
     name: 'articleDetailsPageRecommendationsSlice',
     initialState: recommendationsAdapter.getInitialState<ArticleDetailsRecommendationsSchema>({
         isLoading: false,
@@ -27,12 +24,14 @@ export const articleDetailsComments = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchArticleRecommendations.pending, (state) => {
+                state.error = undefined;
                 state.isLoading = true;
-                state.error = undefined;
             })
-            .addCase(fetchArticleRecommendations.fulfilled, (state, action: PayloadAction<Article[]>) => {
+            .addCase(fetchArticleRecommendations.fulfilled, (
+                state,
+                action,
+            ) => {
                 state.isLoading = false;
-                state.error = undefined;
                 recommendationsAdapter.setAll(state, action.payload);
             })
             .addCase(fetchArticleRecommendations.rejected, (state, action) => {
@@ -42,5 +41,6 @@ export const articleDetailsComments = createSlice({
     },
 });
 
-export const { actions: articleDetailsCommentsActions } = articleDetailsComments;
-export const { reducer: articleDetailsCommentsReducer } = articleDetailsComments;
+export const {
+    reducer: articleDetailsPageRecommendationsReducer,
+} = articleDetailsPageRecommendationsSlice;
