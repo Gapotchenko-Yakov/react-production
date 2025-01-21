@@ -15,7 +15,7 @@ interface AppLinkProps extends LinkProps {
     theme?: AppLinkTheme;
 }
 
-const AppLink = memo((props:AppLinkProps) => {
+export const AppLink = memo((props:AppLinkProps) => {
     const {
         className,
         to,
@@ -34,5 +34,3 @@ const AppLink = memo((props:AppLinkProps) => {
         </Link>
     );
 });
-
-export default AppLink;
