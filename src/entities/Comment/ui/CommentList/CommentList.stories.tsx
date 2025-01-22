@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 export default {
-    title: 'entities/CommentList',
+    title: 'entities/comment/CommentList',
     component: CommentList,
     argTypes: {
         backgroundColor: {

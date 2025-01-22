@@ -1,9 +1,9 @@
-.navbar {
+.Navbar {
     width: 100%;
     height: var(--navbar-height);
+    background: var(--inverted-bg-color);
     display: flex;
     align-items: center;
-    background: var(--inverted-bg-color);
     padding: 20px;
 }
 
@@ -13,4 +13,9 @@
 
 .mainLink {
     margin-right: 15px;
+}
+
+.appName {
+    width: var(--sidebar-width);
+    margin-left: 15px;
 }

@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CommentCard } from './CommentCard';
 
 export default {
-    title: 'entities/CommentCard',
+    title: 'entities/comment/CommentCard',
     component: CommentCard,
     argTypes: {
         backgroundColor: {

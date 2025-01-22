@@ -7,8 +7,10 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
+import { useSearchParams } from 'react-router-dom';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -17,11 +19,13 @@ import {
 import {
     getArticlesPageError,
     getArticlesPageHasMore,
+    getArticlesPageInited,
     getArticlesPageIsLoading,
     getArticlesPageNum,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import cls from './ArticlesPage.module.scss';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticlesPageProps {
     className?: string;
@@ -39,21 +43,14 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
     const articles = useSelector(getArticles.selectAll);
-    const page = useSelector(getArticlesPageNum);
-    const hasMore = useSelector(getArticlesPageHasMore);
 
     const dispatch = useAppDispatch();
 
-    useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
-    });
+    const [searchParams] = useSearchParams();
 
-    const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(initArticlesPage(searchParams));
+    });
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
@@ -62,19 +59,18 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     return (
         <DynamicModuleLoader
             reducers={reducers}
+            removeAfterUnmount={false}
         >
             <Page
                 onScrollEnd={onLoadNextPart}
                 className={classNames(cls.ArticlesPage, {}, [className])}
             >
-                <ArticleViewSelector
-                    view={view}
-                    onViewClick={onChangeView}
-                />
+                <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     articles={articles}
                     view={view}
+                    className={cls.list}
                 />
             </Page>
         </DynamicModuleLoader>
