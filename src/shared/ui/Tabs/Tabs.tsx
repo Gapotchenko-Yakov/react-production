@@ -10,7 +10,7 @@ export interface TabItem {
 
 interface TabsProps {
   className?: string;
-  tabItems: TabItem[];
+  tabs: TabItem[];
   value: string;
   onTabClick : (tab : TabItem) => void
 }
@@ -18,7 +18,7 @@ interface TabsProps {
 export const Tabs = memo((props: TabsProps) => {
     const {
         className,
-        tabItems,
+        tabs,
         value,
         onTabClick,
     } = props;
@@ -30,7 +30,7 @@ export const Tabs = memo((props: TabsProps) => {
     return (
         <div className={classNames(cls.Tabs, {}, [className])}>
             {
-                tabItems.map((tab) => (
+                tabs.map((tab) => (
                     <Card
                         key={tab.value}
                         className={cls.tab}

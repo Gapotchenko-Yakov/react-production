@@ -46,7 +46,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
         <Tabs
             value={value}
             onTabClick={onTabClick}
-            tabItems={typeTabs}
+            tabs={typeTabs}
             className={classNames('', {}, [className])}
 
         />
