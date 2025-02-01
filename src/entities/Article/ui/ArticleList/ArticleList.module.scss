@@ -1,13 +1,21 @@
-.ArticleList {
-    &.BIG {
-        .card {
-            margin-bottom: 30px;
-        }
+.BIG {
+    .card {
+        margin-bottom: 30px;
+    }
+}
+
+.SMALL {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .card {
+        display: inline-flex;
+        height: 300px;
     }
 
-    &.SMALL {
+    .row {
         display: flex;
-        flex-wrap: wrap;
         gap: 30px;
     }
 }
