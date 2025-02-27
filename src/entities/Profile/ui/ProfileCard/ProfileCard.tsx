@@ -2,29 +2,29 @@ import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Input } from 'shared/ui/Input/Input';
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
-import { Profile } from 'entities/Profile/model/types/profile';
 
 import Loader from 'shared/ui/Loader/Loader';
 import { memo } from 'react';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
-  className?: string;
-  data?: Profile;
-  isLoading?: boolean;
-  error?: string;
-  readonly?: boolean;
-  onChangeFirstname?: (value?: string)=> void;
-  onChangeLastname?: (value?: string)=> void;
-  onChangeCity?: (value?: string)=> void;
-  onChangeAge?: (value?: string)=> void;
-  onChangeUsername?: (value?: string)=> void;
-  onChangeAvatar?: (value?: string)=> void;
-  onChangeCurrency?: (currency: Currency)=> void;
-  onChangeCountry?: (country: Country)=> void;
+    className?: string;
+    data?: Profile;
+    isLoading?: boolean;
+    error?: string;
+    readonly?: boolean;
+    onChangeFirstname?: (value?: string) => void;
+    onChangeLastname?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
+    onChangeCurrency?: (currency: Currency) => void;
+    onChangeCountry?: (country: Country) => void;
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
@@ -74,15 +74,15 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.data}>
                 {data?.avatar
-                && (
-                    <div className={cls.avatarWrapper}>
-                        <Avatar
-                            src={data?.avatar}
-                            alt={data?.username}
-                            size={150}
-                        />
-                    </div>
-                )}
+                    && (
+                        <div className={cls.avatarWrapper}>
+                            <Avatar
+                                src={data?.avatar}
+                                alt={data?.username}
+                                size={150}
+                            />
+                        </div>
+                    )}
                 <Input
                     value={data?.first}
                     placeholder={t('Ваше имя')}

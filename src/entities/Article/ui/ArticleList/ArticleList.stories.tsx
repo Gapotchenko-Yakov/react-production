@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
     Article, ArticleBlockType, ArticleType, ArticleView,
-} from 'entities/Article/model/types/article';
+} from '../../model/types/article';
 import { ArticleList } from './ArticleList';
 
-const article:Article = {
+const article: Article = {
     id: '1',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',

@@ -1,15 +1,14 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleView } from 'entities/Article/model/types/article';
 import { Card } from 'shared/ui/Card/Card';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { Button } from 'shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
+import { ArticleView } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemSkeletonProps {
-  className?: string;
-  view: ArticleView;
+    className?: string;
+    view: ArticleView;
 }
 
 export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps) => {

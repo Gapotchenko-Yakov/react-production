@@ -1,17 +1,17 @@
 import { memo, useMemo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Select, SelectOption } from 'shared/ui/Select/Select';
-import { SortOrder } from 'shared/types';
-import { ArticleSortField } from 'entities/Article/model/types/article';
 import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { SortOrder } from 'shared/types';
+import { Select, SelectOption } from 'shared/ui/Select/Select';
+import { ArticleSortField } from '../../model/types/article';
 import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
-  className?: string;
-  sort: ArticleSortField;
-  order: SortOrder;
-  onChangeSort: (newSort: ArticleSortField) => void;
-  onChangeOrder : (newOrder: SortOrder) => void;
+    className?: string;
+    sort: ArticleSortField;
+    order: SortOrder;
+    onChangeSort: (newSort: ArticleSortField) => void;
+    onChangeOrder: (newOrder: SortOrder) => void;
 }
 
 export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
