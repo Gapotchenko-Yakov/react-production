@@ -1,16 +1,16 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
+import ListIcon from 'shared/assets/icons/outline/bars-3.svg';
+import TiledIcon from 'shared/assets/icons/outline/squares-2x2.svg';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleView } from 'entities/Article/model/types/article';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
-import TiledIcon from 'shared/assets/icons/outline/squares-2x2.svg';
-import ListIcon from 'shared/assets/icons/outline/bars-3.svg';
+import { ArticleView } from '../../model/types/article';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
-  className?: string;
-  view: ArticleView;
-  onViewClick?: (view: ArticleView) => void;
+    className?: string;
+    view: ArticleView;
+    onViewClick?: (view: ArticleView) => void;
 }
 
 export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
@@ -44,7 +44,7 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
                     key={viewType.view}
                     theme={ButtonTheme.CLEAR}
                     onClick={onClick(viewType.view)}
-                    // className={classNames('', { [cls.notSelected]: viewType.view !== view })}
+                // className={classNames('', { [cls.notSelected]: viewType.view !== view })}
                 >
                     <Icon
                         Svg={viewType.Icon}

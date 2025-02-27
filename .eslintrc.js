@@ -22,6 +22,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        'g-y-plugin',
     ],
     rules: {
         'linebreak-style': ['error', 'unix'],
@@ -59,6 +60,7 @@ module.exports = {
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
+        'g-y-plugin/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

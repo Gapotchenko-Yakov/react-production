@@ -1,13 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import CopyIcon from 'shared/assets/icons/outline/document-duplicate.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
 import { useCallback } from 'react';
+import { Icon } from '../Icon/Icon';
 import cls from './Code.module.scss';
 import { Button, ButtonTheme } from '../Button/Button';
 
 interface CodeProps {
-  className?: string;
-  text: string;
+    className?: string;
+    text: string;
 }
 
 export const Code = (props: CodeProps) => {

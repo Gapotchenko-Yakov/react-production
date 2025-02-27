@@ -5,17 +5,17 @@ import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getAddCommentFormText } from 'features/addCommentForm/model/selectors/addCommentFormSelectors';
 import { useTranslation } from 'react-i18next';
+import { getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
 
 interface AddCommentFormProps {
-  className?: string;
-  onSendComment: (text: string) => void;
+    className?: string;
+    onSendComment: (text: string) => void;
 }
 
-const reducers : ReducersList = {
+const reducers: ReducersList = {
     addCommentForm: addCommentFormReducer,
 };
 
