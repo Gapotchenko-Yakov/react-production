@@ -1,6 +1,10 @@
 .ListBox {
     position: relative;
 
+    .disabled {
+        opacity: 0.7;
+    }
+
     .trigger {
         background: none;
         border: none;
