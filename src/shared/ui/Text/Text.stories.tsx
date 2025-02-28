@@ -99,3 +99,10 @@ FontSizeL.args = {
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aut consectetur ad dolor odio earum vero! Saepe repellendus mollitia, maxime totam eveniet corporis, architecto laborum aliquid libero tempore placeat ut.',
     size: TextSize.L,
 };
+
+export const FontSizeS = Template.bind({});
+FontSizeS.args = {
+    title: 'title',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aut consectetur ad dolor odio earum vero! Saepe repellendus mollitia, maxime totam eveniet corporis, architecto laborum aliquid libero tempore placeat ut.',
+    size: TextSize.S,
+};
