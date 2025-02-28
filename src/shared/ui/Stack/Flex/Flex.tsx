@@ -46,7 +46,7 @@ export interface FlexProps extends DivProps {
     max?: boolean;
 }
 
-export const Flex = memo((props: FlexProps) => {
+export const Flex = memo<FlexProps>((props: FlexProps) => {
     const {
         className,
         children,
