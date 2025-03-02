@@ -1,9 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
-import { Comment } from '../../model/types/comment';
+import { useTranslation } from 'react-i18next';
+import { VStack } from 'shared/ui/Stack';
 import { CommentCard } from '../CommentCard/CommentCard';
-import cls from './CommentList.module.scss';
+import { Comment } from '../../model/types/comment';
 
 interface CommentListProps {
     className?: string;
@@ -11,39 +12,31 @@ interface CommentListProps {
     isLoading?: boolean;
 }
 
-export const CommentList = (props: CommentListProps) => {
-    const {
-        className,
-        comments,
-        isLoading,
-    } = props;
-
+export const CommentList = memo((props: CommentListProps) => {
+    const { className, isLoading, comments } = props;
     const { t } = useTranslation();
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.CommentList, {}, [className])}>
+            <VStack gap="16" max className={classNames('', {}, [className])}>
                 <CommentCard isLoading />
                 <CommentCard isLoading />
                 <CommentCard isLoading />
-            </div>
+            </VStack>
         );
     }
 
     return (
-        <div className={classNames(cls.CommentList, {}, [className])}>
-            {
-                comments?.length
-                    ? comments.map((comment) => (
-                        <CommentCard
-                            key={comment.id}
-                            comment={comment}
-                            isLoading={isLoading}
-                            className={cls.comment}
-                        />
-                    ))
-                    : <Text text={t('Комментарии отсутствуют')} />
-            }
-        </div>
+        <VStack gap="16" max className={classNames('', {}, [className])}>
+            {comments?.length
+                ? comments.map((comment) => (
+                    <CommentCard
+                        isLoading={isLoading}
+                        comment={comment}
+                        key={comment.id}
+                    />
+                ))
+                : <Text text={t('Комментарии отсутствуют')} />}
+        </VStack>
     );
-};
+});
