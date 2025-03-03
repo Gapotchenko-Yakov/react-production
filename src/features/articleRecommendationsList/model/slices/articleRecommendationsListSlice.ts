@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ArticleRecommendationsListSchema } from '../types/articleRecommendationsListSchema';
 
 const initialState: ArticleRecommendationsListSchema = {
-    
+
 };
 
 export const articleRecommendationsListSlice = createSlice({
@@ -10,7 +10,7 @@ export const articleRecommendationsListSlice = createSlice({
     initialState,
     reducers: {
         template: (state, action: PayloadAction<string>) => {
-           
+
         },
     },
     // extraReducers: (builder) => {

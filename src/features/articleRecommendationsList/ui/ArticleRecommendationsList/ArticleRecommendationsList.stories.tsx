@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <A
 
 export const Normal = Template.bind({});
 Normal.args = {
-   
+
 };

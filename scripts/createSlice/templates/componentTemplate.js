@@ -18,4 +18,5 @@ export const ${componentName} = memo((props: ${componentName}Props) => {
            
         </div>
     );
-});`;
+});
+`;
