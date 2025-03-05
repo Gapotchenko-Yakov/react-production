@@ -1,22 +1,23 @@
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
-import { HStack } from 'shared/ui/Stack';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { profileActions } from '../../model/slice/profileSlice';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
 }
 
-export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps) => {
+export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderProps) => {
     const {
         className,
     } = props;
@@ -25,8 +26,10 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
     const authData = useSelector(getUserAuthData);
     const profileData = useSelector(getProfileData);
     const canEdit = authData?.id === profileData?.id;
-
+    console.log({ canEdit });
     const readonly = useSelector(getProfileReadonly);
+    console.log({ readonly });
+
     const dispatch = useAppDispatch();
 
     const onEdit = useCallback(() => {
@@ -51,6 +54,7 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                             <Button
                                 theme={ButtonTheme.OUTLINED}
                                 onClick={onEdit}
+                                data-testid="EditableProfileCardHeader.EditButton"
                             >
                                 {t('Редактировать')}
                             </Button>
@@ -60,12 +64,14 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                                 <Button
                                     theme={ButtonTheme.OUTLINED_RED}
                                     onClick={onCancelEdit}
+                                    data-testid="EditableProfileCardHeader.CancelButton"
                                 >
                                     {t('Отменить')}
                                 </Button>
                                 <Button
                                     theme={ButtonTheme.OUTLINED}
                                     onClick={onSave}
+                                    data-testid="EditableProfileCardHeader.SaveButton"
                                 >
                                     {t('Сохранить')}
                                 </Button>
@@ -75,4 +81,4 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
             )}
         </HStack>
     );
-};
+});
