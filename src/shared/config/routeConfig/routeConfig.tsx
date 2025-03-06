@@ -81,12 +81,12 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         path: `${routePath.admin_panel}`,
         element: <AdminPanelPage />,
         authOnly: true,
+        roles: [UserRole.ADMIN, UserRole.MANAGER],
     },
     [AppRoutes.FORBIDDEN]: {
         path: `${routePath.forbidden}`,
         element: <ForbiddenPage />,
         authOnly: true,
-        roles: [UserRole.ADMIN, UserRole.MANAGER],
     },
     [AppRoutes.NOT_FOUND]:
     {
