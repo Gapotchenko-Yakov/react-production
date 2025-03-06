@@ -1,8 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -19,12 +18,11 @@ interface NavbarProps {
     className?: string;
 }
 
-const Navbar = memo(({ className }: NavbarProps) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
-
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
 
@@ -47,7 +45,7 @@ const Navbar = memo(({ className }: NavbarProps) => {
             <header className={classNames(cls.Navbar, {}, [className])}>
                 <Text
                     className={cls.appName}
-                    title={t('My App')}
+                    title={t('Ulbi TV App')}
                     theme={TextTheme.INVERTED}
                 />
                 <AppLink
@@ -61,12 +59,10 @@ const Navbar = memo(({ className }: NavbarProps) => {
                     direction="bottom left"
                     className={cls.dropdown}
                     items={[
-                        ...(isAdminPanelAvailable
-                            ? [{
-                                content: t('Админка'),
-                                href: routePath.admin_panel,
-                            }] : []
-                        ),
+                        ...(isAdminPanelAvailable ? [{
+                            content: t('Админка'),
+                            href: routePath.admin_panel,
+                        }] : []),
                         {
                             content: t('Профиль'),
                             href: routePath.profile + authData.id,
@@ -83,11 +79,11 @@ const Navbar = memo(({ className }: NavbarProps) => {
     }
 
     return (
-        <header className={classNames(cls.navbar, {}, [className])}>
+        <header className={classNames(cls.Navbar, {}, [className])}>
             <Button
+                theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
                 onClick={onShowModal}
-                theme={ButtonTheme.CLEAR_INVERTED}
             >
                 {t('Войти')}
             </Button>
@@ -100,5 +96,3 @@ const Navbar = memo(({ className }: NavbarProps) => {
         </header>
     );
 });
-
-export default Navbar;
