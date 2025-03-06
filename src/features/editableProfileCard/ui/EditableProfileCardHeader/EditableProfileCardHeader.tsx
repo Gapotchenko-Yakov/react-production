@@ -26,9 +26,7 @@ export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderP
     const authData = useSelector(getUserAuthData);
     const profileData = useSelector(getProfileData);
     const canEdit = authData?.id === profileData?.id;
-    console.log({ canEdit });
     const readonly = useSelector(getProfileReadonly);
-    console.log({ readonly });
 
     const dispatch = useAppDispatch();
 
