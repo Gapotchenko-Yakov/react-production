@@ -28,7 +28,7 @@ import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
     className?: string;
-    id: string;
+    id?: string;
 }
 
 const reducers: ReducersList = {
@@ -51,7 +51,6 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         dispatch(fetchArticleById(id));
     });
 
-    /* eslint-disable indent */
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
             case ArticleBlockType.CODE:
@@ -82,7 +81,6 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 return null;
         }
     }, []);
-    /* eslint-enable indent */
 
     let content;
 
