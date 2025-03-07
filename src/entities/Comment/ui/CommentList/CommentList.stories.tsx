@@ -36,6 +36,7 @@ Normal.decorators = [
 
 export const Loading = Template.bind({});
 Loading.args = {
+    comments: [],
     isLoading: true,
 };
 Loading.decorators = [
