@@ -7,11 +7,11 @@ import cls from './Input.module.scss';
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
-  className?: string;
-  value?: string | number;
-  onChange?: (value: string)=> void;
-  autofocus?: boolean;
-  readonly?: boolean;
+    className?: string;
+    value?: string | number;
+    onChange?: (value: string) => void;
+    autofocus?: boolean;
+    readonly?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -52,20 +52,21 @@ export const Input = memo((props: InputProps) => {
         setIsFocused(false);
     };
 
-    const onSelect = (e:any) => {
+    const onSelect = (e: any) => {
         setCaretPosition(e?.target?.selectionStart || 0);
     };
 
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
             {placeholder
-            && (
-                <div className={cls.placeholder}>
-                    {`${placeholder}>`}
-                </div>
-            )}
+                && (
+                    <label className={cls.placeholder} htmlFor={`input-${placeholder}`}>
+                        {`${placeholder}>`}
+                    </label>
+                )}
             <div className={cls.caretWrapper}>
                 <input
+                    id={`input-${placeholder}`}
                     ref={ref}
                     type={type}
                     value={value}

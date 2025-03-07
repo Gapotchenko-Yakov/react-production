@@ -7,16 +7,16 @@ import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
-  className?: string;
-  children?: ReactNode;
-  isOpen?: boolean;
-  onClose?: ()=> void;
-  lazy?: boolean;
+    className?: string;
+    children?: ReactNode;
+    isOpen?: boolean;
+    onClose?: () => void;
+    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
-export const Modal: FC<ModalProps> = (props: ModalProps) => {
+export const Modal = (props: ModalProps) => {
     const {
         className, children, isOpen, onClose, lazy,
     } = props;

@@ -1,13 +1,11 @@
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-// import AvatarImg from 'shared/assets/tests/storybook.jpg';
+import { Currency } from 'entities/Currency';
 import ProfilePage from './ProfilePage';
-
-const AvatarImg = 'https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg'; // TODO
 
 export default {
     title: 'pages/ProfilePage',
@@ -19,41 +17,34 @@ export default {
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
 
-export const Light = Template.bind({});
-Light.args = {};
-Light.decorators = [
-    StoreDecorator({
-        profile: {
-            form: {
-                first: 'Иван',
-                lastname: 'Петров',
-                age: 27,
-                currency: Currency.USD,
-                country: Country.Belarus,
-                city: 'Moscow',
-                username: 'admin12',
-                avatar: AvatarImg,
-            },
+export const Normal = Template.bind({});
+Normal.args = {};
+Normal.decorators = [StoreDecorator({
+    profile: {
+        form: {
+            username: 'admin',
+            age: 22,
+            country: Country.Belarus,
+            lastname: 'some name',
+            first: 'asd',
+            city: 'asf',
+            currency: Currency.USD,
         },
-    }),
-];
+    },
+})];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [
-    ThemeDecorator(Theme.DARK),
-    StoreDecorator({
-        profile: {
-            form: {
-                first: 'Иван',
-                lastname: 'Петров',
-                age: 27,
-                currency: Currency.USD,
-                country: Country.Belarus,
-                city: 'Moscow',
-                username: 'admin12',
-                avatar: AvatarImg,
-            },
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    profile: {
+        form: {
+            username: 'admin',
+            age: 22,
+            country: Country.Belarus,
+            lastname: 'some name',
+            first: 'asd',
+            city: 'asf',
+            currency: Currency.USD,
         },
-    }),
-];
+    },
+})];

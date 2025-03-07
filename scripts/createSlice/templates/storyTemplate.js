@@ -15,6 +15,6 @@ const Template: ComponentStory<typeof ${componentName}> = (args) => <${component
 
 export const Normal = Template.bind({});
 Normal.args = {
-   
+
 };
 `;
