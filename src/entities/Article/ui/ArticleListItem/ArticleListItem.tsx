@@ -1,19 +1,20 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
-import { Text } from 'shared/ui/Text/Text';
-import { Icon } from 'shared/ui/Icon/Icon';
-import EyeIcon from 'shared/assets/icons/outline/eye.svg'; import { Card } from 'shared/ui/Card/Card';
+import EyeIcon from 'shared/assets/icons/outline/eye.svg';
+import { routePath } from 'shared/config/routeConfig/routeConfig';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useNavigate } from 'react-router-dom';
-import { routePath } from 'shared/config/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import cls from './ArticleListItem.module.scss';
+import { Card } from 'shared/ui/Card/Card';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { Text } from 'shared/ui/Text/Text';
+import { ArticleBlockType, ArticleView } from '../../model/consts/articleConsts';
 import {
-    Article, ArticleBlockType, ArticleTextBlock, ArticleView,
+    Article, ArticleTextBlock,
 } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
     className?: string;
