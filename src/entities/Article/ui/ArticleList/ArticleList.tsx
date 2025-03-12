@@ -1,14 +1,14 @@
-import { HTMLAttributeAnchorTarget, memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { List, ListRowProps, WindowScroller } from 'react-virtualized';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
+import { List, ListRowProps, WindowScroller } from 'react-virtualized';
 import { PAGE_ID } from 'widgets/Page/ui/Page';
 import { ArticleView } from '../../model/consts/articleConsts';
-import { Article } from '../../model/types/article';
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
+import { Article } from '../../model/types/article';
 
 interface ArticleListProps {
     className?: string;
@@ -42,7 +42,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
 
     const rowRender = ({
-        index, key, style,
+        index, isScrolling, key, style,
     }: ListRowProps) => {
         const items = [];
         const fromIndex = index * itemsPerRow;
@@ -54,7 +54,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     article={articles[i]}
                     view={view}
                     target={target}
-                    key={articles[i].id}
+                    key={`str${i}`}
                     className={cls.card}
                 />,
             );
@@ -80,6 +80,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }
 
     return (
+        // @ts-ignore
         <WindowScroller
             scrollElement={document.getElementById(PAGE_ID) as Element}
         >
@@ -98,6 +99,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 >
                     {virtualized
                         ? (
+                            // @ts-ignore
                             <List
                                 height={height ?? 700}
                                 rowCount={rowCount}
