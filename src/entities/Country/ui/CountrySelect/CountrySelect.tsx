@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/ui/Select/Select';
 import { ChangeEvent, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ListBox } from 'shared/ui/Popups';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Select } from '@/shared/ui/Select/Select';
+import { ListBox } from '@/shared/ui/Popups';
 import cls from './CountrySelect.module.scss';
 import { Country } from '../../model/types/country';
 

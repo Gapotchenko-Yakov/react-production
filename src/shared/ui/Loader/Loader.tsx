@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Loader.module.scss';
 
 interface LoaderProps {
@@ -7,9 +7,9 @@ interface LoaderProps {
 }
 
 const Loader = ({ className }: LoaderProps) => (
-  <div className={classNames(cls.Loader, {}, [className])}>
-    <div className={cls['lds-hourglass']} />
-  </div>
+    <div className={classNames(cls.Loader, {}, [className])}>
+        <div className={cls['lds-hourglass']} />
+    </div>
 );
 
 export default Loader;
