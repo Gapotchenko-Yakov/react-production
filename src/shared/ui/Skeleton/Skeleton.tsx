@@ -1,27 +1,27 @@
-import { CSSProperties, FC, useMemo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { CSSProperties, memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Skeleton.module.scss';
 
 interface SkeletonProps {
-  className?: string;
-  height?: string | number;
-  width?: string | number;
-  borderRadius?: string;
+    className?: string;
+    height?: string | number;
+    width?: string | number;
+    border?: string;
 }
 
-export const Skeleton = (props: SkeletonProps) => {
+export const Skeleton = memo((props: SkeletonProps) => {
     const {
         className,
         height,
         width,
-        borderRadius,
+        border,
     } = props;
 
-    const styles = useMemo<CSSProperties>(() => ({
-        height,
+    const styles: CSSProperties = {
         width,
-        borderRadius,
-    }), [height, width, borderRadius]);
+        height,
+        borderRadius: border,
+    };
 
     return (
         <div
@@ -29,4 +29,4 @@ export const Skeleton = (props: SkeletonProps) => {
             style={styles}
         />
     );
-};
+});

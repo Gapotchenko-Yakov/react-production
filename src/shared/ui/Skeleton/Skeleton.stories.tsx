@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
 import { Skeleton } from './Skeleton';
 
 export default {
@@ -23,7 +23,7 @@ Normal.args = {
 
 export const Circle = Template.bind({});
 Circle.args = {
-    borderRadius: '50%',
+    border: '50%',
     width: 100,
     height: 100,
 };
@@ -36,7 +36,7 @@ NormalDark.args = {
 NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
 export const CircleDark = Template.bind({});
 CircleDark.args = {
-    borderRadius: '50%',
+    border: '50%',
     width: 100,
     height: 100,
 };

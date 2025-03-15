@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card/Card';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card/Card';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { ArticleView } from '../../model/consts/articleConsts';
 import cls from './ArticleListItem.module.scss';
 
@@ -24,7 +24,7 @@ export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps
             <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
                     <div className={cls.header}>
-                        <Skeleton width={30} height={30} borderRadius="50%" />
+                        <Skeleton width={30} height={30} border="50%" />
                         <Skeleton width={150} height={16} className={cls.username} />
                         <Skeleton width={150} height={16} className={cls.date} />
                     </div>

@@ -1,11 +1,11 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Text } from 'shared/ui/Text/Text';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { routePath } from 'shared/config/routeConfig/routeConfig';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Text } from '@/shared/ui/Text/Text';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { routePath } from '@/shared/config/routeConfig/routeConfig';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import cls from './CommentCard.module.scss';
 import { Comment } from '../../model/types/comment';
 
@@ -26,7 +26,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
         return (
             <VStack gap="8" max className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
                 <div className={cls.header}>
-                    <Skeleton width={30} height={30} borderRadius="50%" />
+                    <Skeleton width={30} height={30} border="50%" />
                     <Skeleton height={16} width={100} className={cls.username} />
                 </div>
                 <Skeleton className={cls.text} width="100%" height={50} />
