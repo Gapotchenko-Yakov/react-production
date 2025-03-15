@@ -8,9 +8,9 @@ export enum IconSize {
     XL = 'size_xl',
 }
 
-interface IconProps {
+interface IconProps extends React.SVGProps<SVGSVGElement> {
     className?: string;
-    Svg: VFC<SVGProps<SVGSVGElement>>
+    Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     size?: IconSize;
 }
 
