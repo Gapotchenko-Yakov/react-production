@@ -1,13 +1,12 @@
-import React, { memo, useCallback, useState } from 'react';
-import { BrowserView, MobileOnlyView, MobileView } from 'react-device-detect';
+import { memo, useCallback, useState } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
+import { NotificationList } from '@/entities/Notification';
+import NotificationIcon from '@/shared/assets/icons/outline/bell.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import { Icon } from '@/shared/ui/Icon/Icon';
-import NotificationIcon from '@/shared/assets/icons/outline/bell.svg';
-import { NotificationList } from '@/entities/Notification';
-import { Popover } from '@/shared/ui/Popups';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
-import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { Popover } from '@/shared/ui/Popups';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
@@ -27,7 +26,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
     }, []);
 
     const trigger = (
-        <Button onClick={onOpenDrawer} theme={ButtonTheme.CLEAR}>
+        <Button onClick={onOpenDrawer} theme={ButtonTheme.CLEAR_INVERTED}>
             <Icon Svg={NotificationIcon} />
         </Button>
     );
@@ -43,14 +42,12 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                     <NotificationList className={cls.notifications} />
                 </Popover>
             </BrowserView>
-            <MobileOnlyView>
+            <MobileView>
                 {trigger}
-                <AnimationProvider>
-                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                        <NotificationList />
-                    </Drawer>
-                </AnimationProvider>
-            </MobileOnlyView>
+                <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                    <NotificationList />
+                </Drawer>
+            </MobileView>
         </div>
 
     );
