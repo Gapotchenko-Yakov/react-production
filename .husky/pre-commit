@@ -1,8 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run lint:ts
-npm run lint:scss
+npx lint-staged
+
+# npm run lint:ts
+# npm run lint:scss
 # npm run test:unit
 # npm run build:prod
 # npm run storybook:build
