@@ -80,6 +80,13 @@ jobs:
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()
+      - name: Dummy artifact upload to ensure action is downloaded
+        uses: actions/upload-artifact@v3
+        with:
+          name: dummy
+          path: README.md
+          if-no-files-found: ignore
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
         if: always()
