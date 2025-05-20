@@ -6,8 +6,6 @@
 import path from 'path';
 
 export default {
-
-    // A set of global variables that need to be available in all test environments
     globals: {
         __IS_DEV__: true,
         __API__: '',
@@ -41,17 +39,17 @@ export default {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
-        '^@/(.*)$': '<rootDir>/src/$1', // Добавляем алиас для @
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
-    // reporters: [
-    //     'default',
-    //     ['jest-html-reporters', {
-    //         publicPath: '<rootDir>/reports/unit',
-    //         filename: 'report.html',
-    //         openReport: true,
-    //         inlineSource: true,
-    //     }],
-    // ],
+    reporters: [
+        'default',
+        ['jest-html-reporters', {
+            publicPath: '<rootDir>/reports/unit',
+            filename: 'report.html',
+            // openReport: true,
+            inlineSource: true,
+        }],
+    ],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
@@ -116,6 +114,9 @@ export default {
 
     // Run tests from one or more projects
     // projects: undefined,
+
+    // Use this configuration option to add custom reporters to Jest
+    // reporters: undefined,
 
     // Automatically reset mock state before every test
     // resetMocks: false,
