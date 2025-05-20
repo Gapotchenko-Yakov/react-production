@@ -117,4 +117,3 @@ jobs:
         if: always()
       - name: linting css
         run: npm run lint:scss
-
