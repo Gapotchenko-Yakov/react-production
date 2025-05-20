@@ -25,12 +25,12 @@ Normal.decorators = [
         profile: {
             form: {
                 username: 'admin',
-                age: 22,
-                country: Country.Belarus,
+                age: 27,
+                country: Country.Russia,
                 lastname: 'some name',
-                first: 'asd',
+                first: 'Ivan',
                 city: 'asf',
-                currency: Currency.USD,
+                currency: Currency.RUB,
             },
         },
     }),
