@@ -54,32 +54,32 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
-        case ArticleBlockType.CODE:
-            return (
-                <ArticleCodeBlockComponent
-                    key={block.id}
-                    block={block}
-                    className={cls.block}
-                />
-            );
-        case ArticleBlockType.IMAGE:
-            return (
-                <ArticleImageBlockComponent
-                    key={block.id}
-                    block={block}
-                    className={cls.block}
-                />
-            );
-        case ArticleBlockType.TEXT:
-            return (
-                <ArticleTextBlockComponent
-                    key={block.id}
-                    block={block}
-                    className={cls.block}
-                />
-            );
-        default:
-            return null;
+            case ArticleBlockType.CODE:
+                return (
+                    <ArticleCodeBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            case ArticleBlockType.IMAGE:
+                return (
+                    <ArticleImageBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            case ArticleBlockType.TEXT:
+                return (
+                    <ArticleTextBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            default:
+                return null;
         }
     }, []);
 
@@ -112,7 +112,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                         className={cls.avatar}
                     />
                 </HStack>
-                <VStack gap="4" max>
+                <VStack gap="4" max data-testid="ArticleDetails.Info">
                     <Text
                         className={cls.title}
                         title={article?.title}
