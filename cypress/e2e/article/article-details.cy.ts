@@ -20,16 +20,13 @@ describe('Пользователь заходит на страницу стат
     it('И оставляет комментарий', () => {
         cy.getByTestId('ArticleDetails.Info').should('exist');
         cy.getByTestId('AddCommentForm').scrollIntoView();
-        cy.getByTestId('AddCommentForm.Input').clear().type('ecf');
-        cy.getByTestId('AddCommentForm.Button').click();
+        cy.addComment('asd');
         cy.getByTestId('CommentCard.Content').should('have.length', 1);
     });
     // it('И ставит оценку', () => {
     //     cy.getByTestId('ArticleDetails.Info').should('exist');
     //     cy.getByTestId('RatingCard').scrollIntoView();
-    //     cy.getByTestId('StarRating.2').click();
-    //     cy.getByTestId('RatingCard.Input').clear().type('low');
-    //     cy.getByTestId('RatingCard.Send').click();
+    //     cy.setRate(2, 'low');
     //     cy.getByTestId('[data-selected=true]').should('have.length', 2);
     // });
 });
