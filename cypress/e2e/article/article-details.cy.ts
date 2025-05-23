@@ -1,4 +1,5 @@
 let currentArticleId = '';
+const commentId = '';
 describe('Пользователь заходит на страницу статьи', () => {
     beforeEach(() => {
         cy.login();
@@ -23,6 +24,13 @@ describe('Пользователь заходит на страницу стат
         cy.addComment('asd');
         cy.getByTestId('CommentCard.Content').should('have.length', 1);
     });
+    // it('И оставляет комментарий (пример с стабом на фикстурах)', () => {
+    //     cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+    //     cy.getByTestId('ArticleDetails.Info').should('exist');
+    //     cy.getByTestId('AddCommentForm').scrollIntoView();
+    //     cy.addComment('asd');
+    //     cy.getByTestId('CommentCard.Content').should('have.length', 1);
+    // });
     // it('И ставит оценку', () => {
     //     cy.getByTestId('ArticleDetails.Info').should('exist');
     //     cy.getByTestId('RatingCard').scrollIntoView();
