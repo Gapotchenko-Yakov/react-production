@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 
-import { login } from './commands/common';
+import * as commonCommands from './commands/common';
+import * as articleCommands from './commands/article';
 
-Cypress.Commands.add('login', login);
+Cypress.Commands.addAll(commonCommands);
+Cypress.Commands.addAll(articleCommands);
 
 export { };

@@ -34,8 +34,8 @@ export const removeArticle = (articleId: string) => {
 declare global {
     namespace Cypress {
         interface Chainable {
-            createArticle(article?: Article): Chainable<Article>
-            removeArticle(articleId: string): Chainable<void>
+            createArticle(article?: Article): Chainable<Article>;
+            removeArticle(articleId: string): Chainable<void>;
         }
     }
 }
