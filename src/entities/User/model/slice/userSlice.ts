@@ -13,10 +13,9 @@ export const userSlice = createSlice({
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
         },
-        initAuthData: (state) => {
-            const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+        initAuthData: (state, { payload: user }: PayloadAction<User | undefined>) => {
             if (user) {
-                state.authData = JSON.parse(user);
+                state.authData = user;
             }
             state._inited = true;
         },
