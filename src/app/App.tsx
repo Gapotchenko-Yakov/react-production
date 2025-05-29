@@ -12,6 +12,7 @@ import { setFeatureFlags } from '@/shared/lib/features';
 
 function App() {
     const { theme } = useTheme();
+    console.log('🚀 ~ App ~ theme:', theme);
 
     const dispatch = useDispatch();
     const inited = useSelector(getUserInited);
