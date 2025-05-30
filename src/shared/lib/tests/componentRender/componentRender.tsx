@@ -5,19 +5,20 @@ import { MemoryRouter } from 'react-router-dom';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import i18nForTests from '@/shared/config/i18n/i18nForTests';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { Theme } from '@/shared/const/theme';
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import '@/app/styles/index.scss';
 
-export interface ComponentRenderOptions {
+export interface componentRenderOptions {
     route?: string;
     initialState?: DeepPartial<StateSchema>;
-    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
     theme?: Theme;
 }
 
 interface TestProviderProps {
     children: ReactNode;
-    options?: ComponentRenderOptions;
+    options?: componentRenderOptions;
 }
 
 export function TestProvider(props: TestProviderProps) {
@@ -31,17 +32,23 @@ export function TestProvider(props: TestProviderProps) {
 
     return (
         <MemoryRouter initialEntries={[route]}>
-            <StoreProvider asyncReducers={asyncReducers} initialState={initialState}>
+            <StoreProvider
+                asyncReducers={asyncReducers}
+                initialState={initialState}
+            >
                 <I18nextProvider i18n={i18nForTests}>
-                    {children}
+                    <ThemeProvider initialTheme={theme}>
+                        <div className={`app ${theme}`}>{children}</div>
+                    </ThemeProvider>
                 </I18nextProvider>
             </StoreProvider>
         </MemoryRouter>
     );
 }
 
-export function componentRender(component: ReactNode, options: ComponentRenderOptions = {}) {
-    return render(
-        <TestProvider options={options}>{component}</TestProvider>,
-    );
+export function componentRender(
+    component: ReactNode,
+    options: componentRenderOptions = {},
+) {
+    return render(<TestProvider options={options}>{component}</TestProvider>);
 }
