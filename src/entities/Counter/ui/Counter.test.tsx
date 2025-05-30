@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import { Counter } from './Counter';
 
@@ -11,24 +11,24 @@ describe('Counter', () => {
         expect(valueTitle).toHaveTextContent('10');
     });
 
-    test('increment', () => {
+    test('increment', async () => {
         componentRender(<Counter />, { initialState: { counter: { value: 10 } } });
         const valueTitle = screen.getByTestId('value-title');
         const incBtn = screen.getByTestId('increment-btn');
         expect(valueTitle).toHaveTextContent('10');
-        userEvent.click(incBtn);
-        userEvent.click(incBtn);
+        await userEvent.click(incBtn);
+        await userEvent.click(incBtn);
         expect(valueTitle).toHaveTextContent('12');
     });
 
-    test('decrement', () => {
+    test('decrement', async () => {
         componentRender(<Counter />, { initialState: { counter: { value: 10 } } });
         const valueTitle = screen.getByTestId('value-title');
         const decBtn = screen.getByTestId('decrement-btn');
         expect(valueTitle).toHaveTextContent('10');
-        userEvent.click(decBtn);
-        userEvent.click(decBtn);
-        userEvent.click(decBtn);
+        await userEvent.click(decBtn);
+        await userEvent.click(decBtn);
+        await userEvent.click(decBtn);
         expect(valueTitle).toHaveTextContent('7');
     });
 });
