@@ -810,8 +810,8 @@
   "profile": [
     {
       "id": "1",
-      "first": "john",
-      "lastname": "some",
+      "first": "John",
+      "lastname": "Smith",
       "age": 465,
       "currency": "RUB",
       "country": "Belarus",
@@ -821,7 +821,7 @@
     },
     {
       "id": "2",
-      "first": "user",
+      "first": "user123",
       "lastname": "asf",
       "age": 465,
       "currency": "EUR",

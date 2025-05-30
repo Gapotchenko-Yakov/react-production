@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 
-interface MainPageProps {}
+interface MainPageProps { }
 
 const MainPage = (props: MainPageProps) => {
     const { t } = useTranslation();
 
     return (
-        <Page>
+        <Page data-testid="MainPage">
             {t('Главная страница')}
         </Page>
     );
