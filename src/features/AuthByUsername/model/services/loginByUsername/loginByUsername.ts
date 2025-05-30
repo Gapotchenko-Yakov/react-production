@@ -28,12 +28,12 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
 
             localStorage.setItem(
                 USER_LOCALSTORAGE_KEY,
-                JSON.stringify(user),
+                user.id,
             );
 
             setFeatureFlags(user.features);
 
-            dispatch(userActions.setAuthData(response.data));
+            dispatch(userActions.setAuthData(user));
 
             return response.data;
         } catch (e) {
