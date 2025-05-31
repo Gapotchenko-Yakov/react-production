@@ -35,6 +35,7 @@
     },
     "lint-staged": {
         "**/*.{ts,tsx}": [
+            "prettier --list-different",
             "eslint"
         ],
         "*.scss": "npm run lint:scss"
