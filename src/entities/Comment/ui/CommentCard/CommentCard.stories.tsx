@@ -1,41 +1,35 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { CommentCard } from './CommentCard';
 
 export default {
-    title: 'entities/comment/CommentCard',
+    title: 'entities/Comment/CommentCard',
     component: CommentCard,
     argTypes: {
-        backgroundColor: {
-            control: 'color',
-        },
+        backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof CommentCard>;
 
-const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
+const Template: ComponentStory<typeof CommentCard> = (args) => (
+    <CommentCard {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {
     comment: {
         id: '1',
-        text: 'Some interesting comment.',
-        articleId: '1',
-        user: { id: '1', username: 'Peter' },
+        text: 'hello world',
+        user: { id: '1', username: 'Vasya' },
     },
 };
-Normal.decorators = [
-
-];
 
 export const Loading = Template.bind({});
 Loading.args = {
     comment: {
         id: '1',
-        text: 'Some interesting comment.',
-        articleId: '1',
-        user: { id: '1', username: 'Peter' },
+        text: 'hello world',
+        user: { id: '1', username: 'Vasya' },
     },
     isLoading: true,
 };
-Loading.decorators = [
-
-];

@@ -3,7 +3,6 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { saveJsonSettings } from '../services/saveJsonSettings';
 import { JsonSettings } from '../types/jsonSettings';
 import { User, UserSchema } from '../types/user';
-import { setFeatureFlags } from '@/shared/lib/features';
 import { initAuthData } from '../services/initAuthData';
 
 const initialState: UserSchema = {
@@ -16,12 +15,6 @@ export const userSlice = createSlice({
     reducers: {
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
-        },
-        initAuthData: (state, { payload: user }: PayloadAction<User | undefined>) => {
-            if (user) {
-                state.authData = user;
-            }
-            state._inited = true;
         },
         logout: (state) => {
             state.authData = undefined;
