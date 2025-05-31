@@ -1,5 +1,5 @@
 export const addComment = (text: string) => {
-    cy.getByTestId('AddCommentForm.Input').clear().type(text);
+    cy.getByTestId('AddCommentForm.Input').type(text);
     cy.getByTestId('AddCommentForm.Button').click();
 };
 

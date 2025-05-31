@@ -758,7 +758,7 @@
         "theme": "app_light_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
-        "isArticlesPageWasOpened": false
+        "isArticlesPageWasOpened": true
       }
     },
     {
@@ -821,25 +821,14 @@
     },
     {
       "id": "2",
-      "first": "user123",
+      "first": "last",
       "lastname": "asf",
       "age": 465,
       "currency": "EUR",
       "country": "Ukraine",
       "city": "Moscow",
-      "username": "user",
+      "username": "last",
       "avatar": "https://i.pinimg.com/originals/9a/e0/2d/9ae02d4b4288396108ef77830a59e060.jpg"
-    },
-    {
-      "id": "3",
-      "first": "Petr",
-      "lastname": "Petrov",
-      "age": 39,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Moscow",
-      "username": "petrov",
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
       "id": "4",
