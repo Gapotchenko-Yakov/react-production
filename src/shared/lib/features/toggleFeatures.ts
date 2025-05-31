@@ -15,5 +15,6 @@ export function toggleFeatures<T>({
     if (getFeatureFlag(name)) {
         return on();
     }
+
     return off();
 }
