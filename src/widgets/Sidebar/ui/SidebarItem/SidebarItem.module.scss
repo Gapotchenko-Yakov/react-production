@@ -1,22 +1,21 @@
 .item {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+}
 
-    .icon {
-        fill: var(--inverted-primary-color);
-    }
+.link {
+    margin-left: 10px;
+    opacity: 1;
+}
 
+.icon {
+    fill: var(--inverted-primary-color);
+}
+
+.collapsed {
     .link {
-        margin-left: 10px;
-        opacity: 1;
-    }
-
-    &.collapsed {
-        .link {
-            width: 0;
-            opacity: 0;
-            transition: 0.2s opacity;
-        }
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
     }
 }

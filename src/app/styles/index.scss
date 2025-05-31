@@ -1,11 +1,12 @@
 @import "reset";
 @import "variables/global";
+@import "themes/normal";
 @import "themes/dark";
 @import "themes/orange";
-@import "themes/light";
 
 .app,
-.app_modal {
+.app_modal,
+.app_drawer {
     font: var(--font-m);
     color: var(--primary-color);
 }
