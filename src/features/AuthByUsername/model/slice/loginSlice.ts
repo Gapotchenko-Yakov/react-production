@@ -3,9 +3,9 @@ import { LoginSchema } from '../types/loginSchema';
 import { loginByUsername } from '../services/loginByUsername/loginByUsername';
 
 const initialState: LoginSchema = {
+    isLoading: false,
     username: '',
     password: '',
-    isLoading: false,
 };
 
 export const loginSlice = createSlice({
@@ -29,11 +29,12 @@ export const loginSlice = createSlice({
                 state.isLoading = false;
             })
             .addCase(loginByUsername.rejected, (state, action) => {
-                state.error = action.payload;
                 state.isLoading = false;
+                state.error = action.payload;
             });
     },
 });
 
+// Action creators are generated for each case reducer function
 export const { actions: loginActions } = loginSlice;
 export const { reducer: loginReducer } = loginSlice;
