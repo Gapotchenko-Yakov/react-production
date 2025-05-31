@@ -16,7 +16,7 @@ import { articleDetailsPageReducer } from '../../model/slices';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card';
-import {ArticleRating} from "@/features/articleRating";
+import { ArticleRating } from '@/features/articleRating';
 
 interface ArticleDetailsPageProps {
     className?: string;
