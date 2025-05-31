@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { getProfileValidateErrors } from './getProfileValidateErrors';
 import { ValidateProfileError } from '../../consts/consts';
+import { getProfileValidateErrors } from './getProfileValidateErrors';
 
 describe('getProfileValidateErrors.test', () => {
     test('should work with filled state', () => {
@@ -19,6 +19,8 @@ describe('getProfileValidateErrors.test', () => {
     });
     test('should work with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
-        expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined);
+        expect(getProfileValidateErrors(state as StateSchema)).toEqual(
+            undefined,
+        );
     });
 });

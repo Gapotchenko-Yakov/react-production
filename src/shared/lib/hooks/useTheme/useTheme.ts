@@ -1,6 +1,6 @@
 import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 import { Theme } from '../../../const/theme';
-import { ThemeContext } from '@/app/providers/ThemeProvider/lib/ThemeContext';
 
 interface UseThemeResult {
     toggleTheme: (saveAction?: (theme: Theme) => void) => void;
@@ -9,7 +9,6 @@ interface UseThemeResult {
 
 export function useTheme(): UseThemeResult {
     const { theme, setTheme } = useContext(ThemeContext);
-    console.log('🚀 ~ useTheme ~ theme:', theme);
 
     const toggleTheme = (saveAction?: (theme: Theme) => void) => {
         let newTheme: Theme;

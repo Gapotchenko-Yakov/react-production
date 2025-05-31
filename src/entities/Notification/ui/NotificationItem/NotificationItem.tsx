@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
-import { Text } from '@/shared/ui/Text/Text';
+import { Card, CardTheme } from '@/shared/ui/Card';
+import { Text } from '@/shared/ui/Text';
 import cls from './NotificationItem.module.scss';
 import { Notification } from '../../model/types/notification';
 
 interface NotificationItemProps {
     className?: string;
-    item: Notification
+    item: Notification;
 }
 
 export const NotificationItem = memo((props: NotificationItemProps) => {
@@ -24,7 +24,12 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
 
     if (item.href) {
         return (
-            <a className={cls.link} target="_blank" href={item.href} rel="noreferrer">
+            <a
+                className={cls.link}
+                target="_blank"
+                href={item.href}
+                rel="noreferrer"
+            >
                 {content}
             </a>
         );

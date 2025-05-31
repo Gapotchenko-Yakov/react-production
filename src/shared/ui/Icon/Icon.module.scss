@@ -1,19 +1,9 @@
 .Icon {
-    // stroke: var(--primary-color);
-    // fill: var(--primary-color);
+    fill: var(--primary-color);
+    color: var(--primary-color);
+}
 
-    &.size_m {
-        width: var(--font-line-m);
-        height: var(--font-line-m);
-    }
-
-    &.size_l {
-        width: var(--font-line-l);
-        height: var(--font-line-l);
-    }
-
-    &.size_xl {
-        width: var(--font-line-xl);
-        height: var(--font-line-xl);
-    }
+.inverted {
+    fill: var(--inverted-primary-color);
+    color: var(--inverted-primary-color);
 }

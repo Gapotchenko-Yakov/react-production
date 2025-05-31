@@ -1,50 +1,44 @@
 import { classNames } from './classNames';
 
 describe('classNames', () => {
-    test('main class only', () => {
-        expect(classNames('main-class', {}, [])).toBe('main-class');
+    test('with only first param', () => {
+        expect(classNames('someClass')).toBe('someClass');
     });
 
-    test('with additional classes', () => {
-        const expected = 'main-class class-1 class-2';
-
-        expect(classNames('main-class', {}, ['class-1', 'class-2']))
-            .toBe(expected);
+    test('with additional class', () => {
+        const expected = 'someClass class1 class2';
+        expect(classNames('someClass', {}, ['class1', 'class2'])).toBe(
+            expected,
+        );
     });
 
     test('with mods', () => {
-        const expected = 'main-class class-1 class-2 hovered active';
-
+        const expected = 'someClass class1 class2 hovered scrollable';
         expect(
-            classNames(
-                'main-class',
-                { hovered: true, active: true },
-                ['class-1', 'class-2'],
-            ),
+            classNames('someClass', { hovered: true, scrollable: true }, [
+                'class1',
+                'class2',
+            ]),
         ).toBe(expected);
     });
 
     test('with mods false', () => {
-        const expected = 'main-class class-1 class-2 active';
-
+        const expected = 'someClass class1 class2 hovered';
         expect(
-            classNames(
-                'main-class',
-                { hovered: false, active: true },
-                ['class-1', 'class-2'],
-            ),
+            classNames('someClass', { hovered: true, scrollable: false }, [
+                'class1',
+                'class2',
+            ]),
         ).toBe(expected);
     });
 
     test('with mods undefined', () => {
-        const expected = 'main-class class-1 class-2 hovered';
-
+        const expected = 'someClass class1 class2 hovered';
         expect(
-            classNames(
-                'main-class',
-                { hovered: true, active: undefined },
-                ['class-1', 'class-2'],
-            ),
+            classNames('someClass', { hovered: true, scrollable: undefined }, [
+                'class1',
+                'class2',
+            ]),
         ).toBe(expected);
     });
 });

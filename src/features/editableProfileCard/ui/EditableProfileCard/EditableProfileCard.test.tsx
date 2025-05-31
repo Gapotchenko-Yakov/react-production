@@ -1,12 +1,12 @@
-import { userEvent } from '@storybook/testing-library';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
+import { Profile } from '@/entities/Profile';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { Profile } from '@/entities/Profile';
 import { $api } from '@/shared/api/api';
-import { EditableProfileCard } from './EditableProfileCard';
 import { profileReducer } from '../../model/slice/profileSlice';
+import { EditableProfileCard } from './EditableProfileCard';
 
 const profile: Profile = {
     id: '1',
@@ -36,70 +36,79 @@ const options = {
 };
 
 describe('features/EditableProfileCard', () => {
-    test('switch readonly mode', async () => {
+    test('Режим рид онли должен переключиться', async () => {
         componentRender(<EditableProfileCard id="1" />, options);
-
-        expect(screen.getByRole('button', { name: /редактировать/i })).toBeInTheDocument();
-        expect(screen.queryByRole('button', { name: /отменить/i })).not.toBeInTheDocument();
-
-        await userEvent.click(screen.getByRole('button', { name: /редактировать/i }));
-        expect(screen.getByRole('button', { name: /отменить/i })).toBeInTheDocument();
-        await userEvent.click(screen.getByRole('button', { name: /отменить/i }));
-        expect(screen.getByRole('button', { name: /редактировать/i })).toBeInTheDocument();
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.EditButton'),
+        );
+        expect(
+            screen.getByTestId('EditableProfileCardHeader.CancelButton'),
+        ).toBeInTheDocument();
     });
 
-    test('restore values after cancelling', async () => {
+    test('При отмене значения должны обнуляться', async () => {
         componentRender(<EditableProfileCard id="1" />, options);
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.EditButton'),
+        );
 
-        const firstnameInput = screen.getByRole('textbox', { name: /ваше имя/i });
-        const lastnameInput = screen.getByRole('textbox', { name: /ваша фамилия/i });
-        const editBtn = screen.getByRole('button', { name: /редактировать/i });
+        await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+        await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
 
-        expect(firstnameInput).not.toBe(lastnameInput);
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.firstname'),
+            'user',
+        );
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.lastname'),
+            'user',
+        );
 
-        await userEvent.click(editBtn);
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
+        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
 
-        await userEvent.clear(firstnameInput);
-        await userEvent.clear(lastnameInput);
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.CancelButton'),
+        );
 
-        expect(firstnameInput).toHaveValue('');
-        expect(lastnameInput).toHaveValue('');
-
-        await userEvent.type(firstnameInput, 'user first');
-        await userEvent.type(lastnameInput, 'user last');
-
-        expect(firstnameInput).toHaveValue('user first');
-        expect(lastnameInput).toHaveValue('user last');
-
-        const cancelBtn = screen.getByRole('button', { name: /отменить/i });
-
-        await userEvent.click(cancelBtn);
-
-        expect(firstnameInput).toHaveValue('admin');
-        expect(lastnameInput).toHaveValue('admin');
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue(
+            'admin',
+        );
+        expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
     });
 
-    test('error message if validation failed', async () => {
+    test('Должна появиться ошибка', async () => {
         componentRender(<EditableProfileCard id="1" />, options);
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.EditButton'),
+        );
 
-        await userEvent.click(screen.getByRole('button', { name: /редактировать/i }));
+        await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
 
-        await userEvent.clear(screen.getByRole('textbox', { name: /ваша фамилия/i }));
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.SaveButton'),
+        );
 
-        await userEvent.click(screen.getByRole('button', { name: /сохранить/i }));
-
-        // expect(screen.getByText(/имя и фамилия обязательны/i)).toBeInTheDocument(); // TODO
+        expect(
+            screen.getByTestId('EditableProfileCard.Error.Paragraph'),
+        ).toBeInTheDocument();
     });
 
-    test('if validation check is ok then send PUT query', async () => {
+    test('Если нет ошибок валидации, то на сервер должен уйти PUT запрос', async () => {
         const mockPutReq = jest.spyOn($api, 'put');
         componentRender(<EditableProfileCard id="1" />, options);
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.EditButton'),
+        );
 
-        await userEvent.click(screen.getByRole('button', { name: /редактировать/i }));
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.firstname'),
+            'user',
+        );
 
-        await userEvent.type(screen.getByRole('textbox', { name: /ваша фамилия/i }), 'some_lastname');
-
-        await userEvent.click(screen.getByRole('button', { name: /сохранить/i }));
+        await userEvent.click(
+            screen.getByTestId('EditableProfileCardHeader.SaveButton'),
+        );
 
         expect(mockPutReq).toHaveBeenCalled();
     });

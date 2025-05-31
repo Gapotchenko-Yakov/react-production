@@ -1,12 +1,9 @@
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/shared/const/theme';
-import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-// import AvatarImg from 'shared/assets/tests/storybook.jpg';
+import { Currency } from '@/entities/Currency';
+import avatar from '@/shared/assets/tests/storybook.jpg';
 import { ProfileCard } from './ProfileCard';
-
-const AvatarImg = 'https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg'; // TODO
 
 export default {
     title: 'entities/ProfileCard',
@@ -16,42 +13,27 @@ export default {
     },
 } as ComponentMeta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: ComponentStory<typeof ProfileCard> = (args) => (
+    <ProfileCard {...args} />
+);
 
-export const Light = Template.bind({});
-Light.args = {
+export const Primary = Template.bind({});
+Primary.args = {
     data: {
-        first: 'Иван',
-        lastname: 'Петров',
-        age: 27,
+        username: 'admin',
+        age: 22,
+        country: Country.Ukraine,
+        lastname: 'last',
+        first: 'asd',
+        city: 'asf',
         currency: Currency.USD,
-        country: Country.Belarus,
-        city: 'Moscow',
-        username: 'admin12',
-        avatar: AvatarImg,
+        avatar,
     },
 };
 
-export const Dark = Template.bind({});
-Dark.args = {
-    data: {
-        first: 'Иван',
-        lastname: 'Петров',
-        age: 27,
-        currency: Currency.USD,
-        country: Country.Belarus,
-        city: 'Moscow',
-        username: 'admin12',
-        avatar: AvatarImg,
-    },
-};
-Dark.decorators = [
-    ThemeDecorator(Theme.DARK),
-];
-
-export const WithError = Template.bind({});
-WithError.args = {
-    error: 'Some error',
+export const withError = Template.bind({});
+withError.args = {
+    error: 'true',
 };
 
 export const Loading = Template.bind({});
