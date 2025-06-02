@@ -25,7 +25,7 @@ Primary.args = {
         country: Country.Ukraine,
         lastname: 'last',
         first: 'asd',
-        city: 'asf',
+        city: 'gghg',
         currency: Currency.USD,
         avatar,
     },
