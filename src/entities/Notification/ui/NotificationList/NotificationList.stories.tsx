@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import withMock from 'storybook-addon-mock';
 import { NotificationList } from './NotificationList';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
@@ -11,18 +10,15 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        withMock,
-    ],
 } as ComponentMeta<typeof NotificationList>;
 
-const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />;
+const Template: ComponentStory<typeof NotificationList> = (args) => (
+    <NotificationList {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [
-    StoreDecorator({}),
-];
+Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
     mockData: [
         {
@@ -33,17 +29,17 @@ Normal.parameters = {
                 {
                     id: '1',
                     title: 'Уведомление',
-                    description: 'Поставь лайк и оставь комментарий',
+                    description: 'Поставь лайк и оставь комментарий под last',
                 },
                 {
                     id: '2',
                     title: 'Уведомление 2',
-                    description: 'Поставь лайк и оставь комментарий',
+                    description: 'Поставь лайк и оставь комментарий под last',
                 },
                 {
                     id: '3',
                     title: 'Уведомление 3',
-                    description: 'Поставь лайк и оставь комментарий',
+                    description: 'Поставь лайк и оставь комментарий под last',
                 },
             ],
         },

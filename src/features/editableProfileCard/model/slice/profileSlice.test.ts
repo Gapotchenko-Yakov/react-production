@@ -1,43 +1,40 @@
-import { DeepPartial } from '@reduxjs/toolkit';
-import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { profileActions, profileReducer } from './profileSlice';
-import { Profile, ProfileSchema } from '../types/editableProfileCardSchema';
+import { Currency } from '@/entities/Currency';
+import { ValidateProfileError } from '../../model/consts/consts';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
-import { ValidateProfileError } from '../consts/consts';
+import { ProfileSchema } from '../types/editableProfileCardSchema';
+import { profileActions, profileReducer } from './profileSlice';
 
-const data: Profile = {
-    first: 'Иван',
-    lastname: 'Петров',
-    age: 27,
+const data = {
+    username: 'admin',
+    age: 22,
+    country: Country.Ukraine,
+    lastname: 'last',
+    first: 'asd',
+    city: 'asf',
     currency: Currency.USD,
-    country: Country.Belarus,
-    city: 'Moscow',
-    username: 'admin12',
-    avatar: 'https://pic.rutubelist.ru/user/b1/6e/b16e8e86585f1ceb8d8c622266ef2648.jpg',
 };
 
-describe('profileSlice', () => {
+describe('profileSlice.test', () => {
     test('test set readonly', () => {
-        const state: DeepPartial<ProfileSchema> = {
-            readonly: false,
-        };
-
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.setReadonly(true),
-        )).toEqual({
-            readonly: true,
-        });
+        const state: DeepPartial<ProfileSchema> = { readonly: false };
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                profileActions.setReadonly(true),
+            ),
+        ).toEqual({ readonly: true });
     });
 
     test('test cancel edit', () => {
-        const state: DeepPartial<ProfileSchema> = { data, form: { username: '' } };
+        const state: DeepPartial<ProfileSchema> = {
+            data,
+            form: { username: '' },
+        };
 
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.cancelEdit(),
-        )).toEqual({
+        expect(
+            profileReducer(state as ProfileSchema, profileActions.cancelEdit()),
+        ).toEqual({
             readonly: true,
             validateErrors: undefined,
             data,
@@ -46,14 +43,16 @@ describe('profileSlice', () => {
     });
 
     test('test update profile', () => {
-        const state: DeepPartial<ProfileSchema> = {
-            form: { username: '123' },
-        };
+        const state: DeepPartial<ProfileSchema> = { form: { username: '123' } };
 
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.updateProfile({ username: '123456' }),
-        )).toEqual({
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                profileActions.updateProfile({
+                    username: '123456',
+                }),
+            ),
+        ).toEqual({
             form: { username: '123456' },
         });
     });
@@ -64,24 +63,25 @@ describe('profileSlice', () => {
             validateErrors: [ValidateProfileError.SERVER_ERROR],
         };
 
-        expect(profileReducer(
-            state as ProfileSchema,
-            updateProfileData.pending,
-        )).toEqual({
+        expect(
+            profileReducer(state as ProfileSchema, updateProfileData.pending),
+        ).toEqual({
             isLoading: true,
             validateErrors: undefined,
         });
     });
 
-    test('test update profile service fulfilled', () => {
+    test('test update profile service fullfiled', () => {
         const state: DeepPartial<ProfileSchema> = {
             isLoading: true,
         };
 
-        expect(profileReducer(
-            state as ProfileSchema,
-            updateProfileData.fulfilled(data, ''),
-        )).toEqual({
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                updateProfileData.fulfilled(data, ''),
+            ),
+        ).toEqual({
             isLoading: false,
             validateErrors: undefined,
             readonly: true,

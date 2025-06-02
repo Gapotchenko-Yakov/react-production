@@ -1,37 +1,34 @@
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import withMock from 'storybook-addon-mock';
+import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article } from '@/entities/Article/model/types/article';
-import { ArticleType, ArticleBlockType } from '@/entities/Article';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
-    title: 'pages/article/ArticleDetailsPage',
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
     component: ArticleDetailsPage,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [
-        withMock,
-    ],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
+    <ArticleDetailsPage {...args} />
+);
 
 const article: Article = {
     id: '1',
     title: 'Javascript news',
-    user: {
-        id: '1',
-        username: 'John',
-
-    },
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
     type: [ArticleType.IT],
+    user: {
+        id: '1',
+        username: 'last',
+    },
     blocks: [
         {
             id: '1',
@@ -69,17 +66,3 @@ Normal.decorators = [
         },
     }),
 ];
-Normal.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/articles?_limit=3`,
-            method: 'GET',
-            status: 200,
-            response: [
-                { ...article, id: '1' },
-                { ...article, id: '2' },
-                { ...article, id: '3' },
-            ],
-        },
-    ],
-};

@@ -1,25 +1,23 @@
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { Input } from '@/shared/ui/Input/Input';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
-
-import Loader from '@/shared/ui/Loader/Loader';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
+import { Input } from '@/shared/ui/Input';
+import { Loader } from '@/shared/ui/Loader';
+import { Avatar } from '@/shared/ui/Avatar';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
+import { Profile } from '../../model/types/profile';
 
 interface ProfileCardProps {
     className?: string;
     data?: Profile;
-    isLoading?: boolean;
     error?: string;
+    isLoading?: boolean;
     readonly?: boolean;
-    onChangeFirstname?: (value?: string) => void;
     onChangeLastname?: (value?: string) => void;
+    onChangeFirstname?: (value?: string) => void;
     onChangeCity?: (value?: string) => void;
     onChangeAge?: (value?: string) => void;
     onChangeUsername?: (value?: string) => void;
@@ -28,7 +26,7 @@ interface ProfileCardProps {
     onChangeCountry?: (country: Country) => void;
 }
 
-export const ProfileCard = memo((props: ProfileCardProps) => {
+export const ProfileCard = (props: ProfileCardProps) => {
     const {
         className,
         data,
@@ -37,18 +35,26 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         readonly,
         onChangeFirstname,
         onChangeLastname,
-        onChangeCity,
         onChangeAge,
-        onChangeUsername,
+        onChangeCity,
         onChangeAvatar,
-        onChangeCurrency,
+        onChangeUsername,
         onChangeCountry,
+        onChangeCurrency,
     } = props;
     const { t } = useTranslation('profile');
 
     if (isLoading) {
         return (
-            <HStack justify="center" max className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
+            <HStack
+                justify="center"
+                max
+                className={classNames(
+                    cls.ProfileCard,
+                    { [cls.loading]: true },
+                    [className],
+                )}
+            >
                 <Loader />
             </HStack>
         );
@@ -56,7 +62,14 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     if (error) {
         return (
-            <HStack justify="center" max className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+            <HStack
+                justify="center"
+                max
+                className={classNames(cls.ProfileCard, {}, [
+                    className,
+                    cls.error,
+                ])}
+            >
                 <Text
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке профиля')}
@@ -72,7 +85,11 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     };
 
     return (
-        <VStack gap="8" max className={classNames(cls.ProfileCard, mods, [className])}>
+        <VStack
+            gap="8"
+            max
+            className={classNames(cls.ProfileCard, mods, [className])}
+        >
             {data?.avatar && (
                 <HStack justify="center" max className={cls.avatarWrapper}>
                     <Avatar src={data?.avatar} />
@@ -84,6 +101,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 className={cls.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
+                data-testid="ProfileCard.firstname"
             />
             <Input
                 value={data?.lastname}
@@ -91,6 +109,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
+                data-testid="ProfileCard.lastname"
             />
             <Input
                 value={data?.age}
@@ -123,15 +142,15 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
             <CurrencySelect
                 className={cls.input}
                 value={data?.currency}
-                readonly={readonly}
                 onChange={onChangeCurrency}
+                readonly={readonly}
             />
             <CountrySelect
                 className={cls.input}
                 value={data?.country}
-                readonly={readonly}
                 onChange={onChangeCountry}
+                readonly={readonly}
             />
         </VStack>
     );
-});
+};

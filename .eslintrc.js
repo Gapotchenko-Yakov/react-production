@@ -8,6 +8,8 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
+        'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -23,15 +25,15 @@ module.exports = {
         'i18next',
         'react-hooks',
         'g-y-plugin',
+        'unused-imports',
     ],
     rules: {
-        'linebreak-style': ['error', 'unix'],
-        'react/jsx-indent': [1, 4],
-        'react/jsx-indent-props': [1, 4],
-        indent: [1, 4],
+        'unused-imports/no-unused-imports': 'error',
         'react/jsx-filename-extension': [
             2,
-            { extensions: ['.js', '.jsx', '.tsx'] },
+            {
+                extensions: ['.js', '.jsx', '.tsx'],
+            },
         ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -59,19 +61,53 @@ module.exports = {
                     'border',
                     'direction',
                     'gap',
+                    'feature',
                 ],
             },
         ],
-        'max-len': ['error', { ignoreComments: true, code: 125 }],
+        'max-len': [
+            'error',
+            {
+                ignoreComments: true,
+                code: 125,
+            },
+        ],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react-hooks/rules-of-hooks': 'error',
+        // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error',
+        // Checks effect dependencies,
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
-        'g-y-plugin/path-checker': 'error',
+        'g-y-plugin/path-checker': [
+            'error',
+            {
+                alias: '@',
+            },
+        ],
+        'g-y-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
+        'g-y-plugin/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: [
+                    '**/*.test.*',
+                    '**/*.story.*',
+                    '**/StoreDecorator.tsx',
+                ],
+            },
+        ],
+        'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
+        'react/no-unstable-nested-components': 'warn',
     },
     globals: {
         __IS_DEV__: true,
@@ -86,5 +122,11 @@ module.exports = {
                 'max-len': 'off',
             },
         },
+        {
+            files: ["cypress/**/*", "**/*.cy.tsx"],
+            rules: {
+                "g-y-plugin/path-checker": "off"
+            }
+        }
     ],
 };
