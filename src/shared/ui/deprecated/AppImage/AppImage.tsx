@@ -13,7 +13,6 @@ interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 /**
- * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
  */
 export const AppImage = memo((props: AppImageProps) => {
