@@ -35,7 +35,7 @@ Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
     mockData: [
         {
-            url: `${__API__}/articles?_limit=3`,
+            url: `${__API__}/articles?_limit=3&_expand=user`,
             method: 'GET',
             status: 200,
             response: [
