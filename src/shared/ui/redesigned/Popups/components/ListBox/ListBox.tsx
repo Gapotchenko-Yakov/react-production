@@ -61,7 +61,6 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                 <HListBox.Button
                     as={Button}
                     variant="filled"
-                    disabled={readonly}
                     addonRight={<Icon Svg={ArrowIcon} />}
                 >
                     {selectedItem?.content ?? defaultValue}
