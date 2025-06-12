@@ -45,8 +45,15 @@
     "просмотрам": "views",
     "Создание новой статьи": "Create new article",
     "Редактирование статьи с ID = ": "Edit article with ID = ",
-    "My App": "My App",
+    "YaG App": "YaG App",
     "Создать статью": "Create article",
-    "Профиль пользователя": "Профиль пользователя",
-    "Закрыть": "Закрыть"
+    "Профиль пользователя": "User profile",
+    "Закрыть": "Close",
+    "{{count}} просмотров_zero": "{{count}} views",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views",
+    "Читать далее...": "Read more...",
+    "Админка": "AdminUI",
+    "Настройки": "Settings",
+    "Сортировать по:": "Sort by:"
 }
