@@ -14,7 +14,7 @@
         "prettier:check": "npx prettier --check **/*.{ts,tsx,json}",
         "prettier:list": "npx prettier --list-different **/*.{ts,tsx,json}",
         "prettier": "npx prettier --write **/*.{ts,tsx,json}",
-        "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+        "lint:ts": "eslint \"./src/**/*.{ts,tsx}\"",
         "lint:ts:error": "eslint \"**/*.{ts,tsx}\" --quiet",
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
         "lint:scss": "npx stylelint \"**/*.scss\"",
