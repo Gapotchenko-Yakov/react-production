@@ -24,7 +24,7 @@ const primaryArgs = {
         age: 22,
         country: Country.Ukraine,
         lastname: 'Ivanov',
-        first: 'asd',
+        first: 'asd1',
         city: 'asf',
         currency: Currency.USD,
         avatar,
