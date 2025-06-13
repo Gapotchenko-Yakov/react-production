@@ -1,0 +1,10 @@
+/build
+node_modules
+.idea
+/storybook-static
+.loki/report.html
+.loki/report.json
+/reports/unit
+**/*.pem
+json-server/cert.pem
+json-server/key.pem
