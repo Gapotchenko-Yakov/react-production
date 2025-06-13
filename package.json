@@ -7,7 +7,13 @@
         "packages/*"
     ],
     "scripts": {
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "lint:ts": "eslint \"apps/**/src/**/*.{ts,tsx}\"",
+        "lint:ts:error": "eslint \"apps/**/src/**/*.{ts,tsx}\" --quiet",
+        "lint:ts:fix": "eslint \"apps/**/src/**/*.{ts,tsx}\" --fix",
+        "lint:scss": "stylelint \"apps/**/*.scss\"",
+        "lint:scss:fix": "stylelint \"apps/**/*.scss\" --fix",
+        "prettier": "prettier --write \"apps/**/*.{ts,tsx,json}\""
     },
     "devDependencies": {
         "husky": "^7.0.0",
