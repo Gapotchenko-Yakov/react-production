@@ -69,19 +69,19 @@ jobs:
       - name: install modules
         run: npm ci
       - name: build production project
-        run: npm run build:prod
+        run: npm run build:prod --workspace=client
         if: always()
       - name: build storybook
-        run: npm run storybook:build
+        run: npm run storybook:build --workspace=client
         if: always()
       - name: screenshot testing
-        run: npm run test:ui:ci
+        run: npm run test:ui:ci --workspace=client
         if: always()
       - name: unit testing
         if: always()
-        run: npm run test:unit
+        run: npm run test:unit --workspace=client
       - name: Generate HTML report
-        run: npm run test:ui:report
+        run: npm run test:ui:report --workspace=client
         if: always()
       - name: move loki
         run: mv .loki reports/
