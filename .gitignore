@@ -1,0 +1,11 @@
+/apps/client/build
+/apps/client/reports/unit
+/apps/client/.loki/report.html
+/apps/client/.loki/report.json
+/apps/client/.loki/current
+/apps/client/.loki/difference
+node_modules
+.idea
+storybook-static
+
+**/*.pem
