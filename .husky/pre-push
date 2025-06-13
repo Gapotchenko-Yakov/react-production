@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run test:unit --workspace=apps/client
+npm run test:unit --workspace=client
 # npm run test:ui - working
