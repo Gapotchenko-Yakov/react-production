@@ -84,7 +84,7 @@ jobs:
         run: npm run test:ui:report --workspace=client
         if: always()
       - name: move loki
-        run: mv .loki reports/
+        run: mv apps/client/.loki apps/client/reports/
         if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v5 # v2
