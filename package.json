@@ -7,7 +7,7 @@
         "packages/*"
     ],
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi",
         "lint:ts": "eslint \"apps/**/src/**/*.{ts,tsx}\"",
         "lint:ts:error": "eslint \"apps/**/src/**/*.{ts,tsx}\" --quiet",
         "lint:ts:fix": "eslint \"apps/**/src/**/*.{ts,tsx}\" --fix",
