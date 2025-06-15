@@ -6,7 +6,13 @@ COPY package*.json ./
 COPY apps/client/package*.json apps/client/
 COPY packages/ ./packages/
 
-RUN npm install --workspace=client --omit=dev
+# ENV NODE_ENV=production
+
+COPY apps/client/scripts/clear-cache.js ./apps/client/scripts/clear-cache.js
+
+RUN npm install
+
+RUN npm install --workspace=client
 
 COPY apps/client/ ./apps/client/
 
