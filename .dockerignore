@@ -6,6 +6,8 @@ apps/**/dist
 apps/**/build
 apps/**/.next
 
+!apps/client/config/build
+
 .git
 .vscode
 .DS_Store
