@@ -10,7 +10,7 @@ COPY packages/ ./packages/
 
 # ENV NODE_ENV=production
 
-RUN npm install --omit=dev
+# RUN npm install --omit=dev
 RUN npm install --workspace=server --omit=dev
 # COPY tsconfig.base.json ./
 # COPY babel.config.json ./

@@ -10,7 +10,7 @@ COPY packages/ ./packages/
 
 COPY apps/client/scripts/clear-cache.js ./apps/client/scripts/clear-cache.js
 
-RUN npm install
+# RUN npm install
 
 RUN npm install --workspace=client
 
@@ -21,7 +21,16 @@ COPY apps/client/ ./apps/client/
 
 RUN npm run build:prod --workspace=client
 
-# Stage 2 — Nginx для раздачи
+# Stage 2
+FROM alpine:3.19
+# FROM node:18-alpine
+
+
+WORKDIR /app
+
+COPY --from=builder /app/apps/client/build /app/apps/client/build
+
+# Stage 3 — Nginx для раздачи
 # FROM nginx:alpine
 
 # COPY nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
