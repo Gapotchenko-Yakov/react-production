@@ -25,7 +25,8 @@ jobs:
               run: |
                   ssh -o StrictHostKeyChecking=no deployer@${{ secrets.PROD_HOST }} << 'EOF'
                     cd ${{ secrets.PROD_PROJECT_PATH }}
-                    git pull origin main
+                    git checkout feature/docker-deploy
+                    git pull origin feature/docker-deploy
                     docker compose pull
                     docker compose up -d --build
                   EOF
