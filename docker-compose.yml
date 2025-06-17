@@ -31,23 +31,24 @@ services:
       - server
 
       # initial generation
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - certbot-etc:/etc/letsencrypt
+  #     - certbot-var:/var/lib/letsencrypt
+  #     - web-root:/var/www/html 
+  #   depends_on:
+  #     - nginx
+  #   command: certonly --webroot --webroot-path=/var/www/html --email yakov.gapotchenko@gmail.com --agree-tos --no-eff-email --staging -d yagapp.ru -d www.yagapp.ru
   certbot:
     image: certbot/certbot
-    container_name: certbot
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
       - web-root:/var/www/html # initial generation
-    depends_on:
-      - nginx
-    command: certonly --webroot --webroot-path=/var/www/html --email yakov.gapotchenko@gmail.com --agree-tos --no-eff-email --staging -d yagapp.ru -d www.yagapp.ru
-  # certbot:
-  #   image: certbot/certbot
-  #   volumes:
-  #     - certbot-etc:/etc/letsencrypt
-  #     - certbot-var:/var/lib/letsencrypt
-  #   entrypoint: >
-  #     sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/html; sleep 12h & wait $${!}; done"
+    entrypoint: >
+      sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/html; sleep 12h & wait $${!}; done"
 
 volumes:
   client_build:
