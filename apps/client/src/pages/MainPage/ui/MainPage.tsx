@@ -12,7 +12,7 @@ const MainPage = () => {
 
     return (
         <Page data-testid="MainPage">
-            <div>-----</div>
+            <div>---123---</div>
             {t('Главная страница')}
         </Page>
     );
