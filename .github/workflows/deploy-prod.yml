@@ -28,6 +28,7 @@ jobs:
                     git checkout feature/docker-deploy
                     git pull origin feature/docker-deploy
                     docker compose down
+                    docker volume rm react-production_client_build
                     docker compose pull
                     docker compose up -d --build
                   EOF
