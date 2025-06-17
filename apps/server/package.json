@@ -1,0 +1,11 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./index.js"
+    },
+    "dependencies": {
+        "json-server": "^0.17.0"
+    }
+}
